@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CatalogoVentas</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body style='background-image: url("http://127.0.0.1:3000/assets/back.jpg")'>
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#"><img src="/assets/logo.png" height="100" width="200"/></a>
+  </div>
+  <div class="navbar-collapse collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+          <div class=col-lg-1>
+      </div>
+    <li>
+    <form class="navbar-form navbar-right">
+      <input type="text" class="form-control col-lg-10" placeholder="Buscar">
+    </form>
+  </li>
+    </ul>
+    
+    <ul class="nav nav-pills pull-right">
+  <% if user_signed_in? %>
+    <li  class="active"><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
+  <% else %>
+    <li  class="active"><%= link_to "Ingresar", new_user_session_path %></li>
+    <li  class="active"><%= link_to "Registrate", new_user_registration_path %></li>
+  <% end %>
+</ul>
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-3">
+  </div>
+    <div  class="col-lg-9">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-info alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+<div class="row">
+<div class="col-lg-2">
+</div>
+<div class="col-lg-8">
+<div class="jumbotron">
+  
+  <%=yield%>
+</div>
+</div>
+</div>
+ 
+</body>
+<footer id="footer" style="">
+  <div class="panel panel-default">
+          <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-2 col-sm-12">
+              <h4>Ferro Tools</h4>
+              <p>Ferro tools es una tienda virtual, en el area ferretera, oferca productos de hogar hasta industriales, para las damas ofrecemos herramientas de jardineria y bricolage</p>
+            </div>
+            <div class="col-lg-3 col-sm-12 ">
+              <h4>Términos y condiciones</h4>
+              <div id="tweet" class="twitter" data-account-id="crivosthemes">
+                <p>Véa los términos y clasusulas de uso de la página web aqui
+                <a href="/legal.html"> Términos y condiciones </a></p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+              <div class="contact-details">
+                <h4>Contáctanos</h4>
+                <ul class="contact">
+                  <li><p><i class="icon-map-marker"></i> <strong>Dirección:</strong>C/ nombre de la calle</p></li>
+                  <li><p><i class="icon-phone"></i> <strong>Teléfono</strong> 4-xxx-xxx</p></li>
+                  <li><p><i class="icon-link"></i> <strong>Celular:</strong> 7-xxx-xxxx</p></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+              <h4>Síguenos</h4>
+              <div class="social-icons">
+                <ul class="social-icons">
+                  <li class="facebook"><a href="http://www.facebook.com/" target="_blank" data-placement="bottom" rel="tooltip" title="Facebook">Facebook</a></li>
+                  <li class="twitter"><a href="http://www.twitter.com/" target="_blank" data-placement="bottom" rel="tooltip" title="Twitter">Twitter</a></li>
+                  <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" data-placement="bottom" rel="tooltip" title="Linkedin">Linkedin</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+</footer>
+</html>
+
+</html>

@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-lg-4">
+		
+		<%if(@pictures.size>0)%>
+    		<% @pictures.each do |picture| %>
+
+      <a href="<%=picture.picture.url%>" rel="group1" data-colorbox-static="true" class="cboxElement"><img src="<%=picture.picture.url%>"  heigth="100" width="100"/></a><span  style="cursor:pointer;" onclick=""><a href="/pictures/delete/<%=picture.id%>"><img src="/assets/delete.png" width="24" onClick="return confirm('Desea eliminar esta imagen?');"/></a></span>
+   			 <%end%>
+			<%end%>
+	</div>
+	<div class="col-lg-6">
+		<h3>Actualizar Producto</h3></br>
+<%= form_for @product, :html => { :class => 'bs-example form-horizontal', :multipart => true}  do |t| %>
+Nombre: <%=t.text_field :name,:class=>'form-control'%><br>
+Codigo: <%=t.text_field :code,:class=>'form-control'%><br>
+Marca: <%=t.text_field :brand,:class=>'form-control'%><br>
+Precio: <%=t.text_field :price,:class=>'form-control'%><br>
+<%=t.file_field :picture,:multiple=>true,:class=>'form-control'%><br>
+<%= t.hidden_field :subcategory_id,:value=>@product.subcategory_id%>
+<input type="submit" value="Actualizar">
+<%end%>
+</div>
+</div>

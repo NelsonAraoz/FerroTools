@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-lg-1">
+		</div>
+		<div class="col-lg-11">
+<h1>Subir Archivo</h1>
+<%= form_for @picture, :html => { :class => 'bs-example form-horizontal', :multipart => true} do |t| %>
+<%=t.file_field :picture,:multiple=>true%>
+<input type="submit" value="subir">
+<%@pictures.each do |pic|%>
+<li>
+<img src="<%=pic.picture.url%>">
+</li>
+<%end%>
+<%end%>
+</div>
+</div>

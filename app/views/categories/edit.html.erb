@@ -1,0 +1,6 @@
+<h1 align="center">Editar Categoria</h1>
+<h4>Introduzca el nuevo nombre de la categoria:</h4><br>
+<%= form_for @category do |t| %>
+Nombre: <%=t.text_field :nombre%>
+<input type="submit" value="Actualizar">
+<%end%>

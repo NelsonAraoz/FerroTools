@@ -1,0 +1,30 @@
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+ 
+<div class="row">
+  <div class="col-lg-2" >
+  </div>
+  <div class="col-lg-7" >
+<h2>Ingresar a Ferro tools, tienda virtual</h2></br>
+<h4>Le damos la bienvenida y esperemos encuentre lo que busque</h4>
+
+
+  <div><%= f.label :email, "Correo" %><br />
+  <%= f.email_field :email, :autofocus => true,:class=>'form-control' %></div>
+
+  <div><%= f.label :password, "Contraseña" %><br />
+  <%= f.password_field :password,:class=>'form-control' %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me, "Recordarme" %></div>
+  <% end -%>
+
+
+  <div><%= f.submit "Entrar",:class=>"btn btn-primary" %></div>
+<% end %>
+<%= render "devise/shared/links" %>
+
+</div>
+</div>
+

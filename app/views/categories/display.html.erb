@@ -1,0 +1,44 @@
+
+<h2><%= @category.nombre %></h2></br>
+<h4><%= @selected_subcategory.name %><%if(current_user!=nil && current_user.rol=='admin')%> <a href="/products/new/<%=@selected_subcategory.id%>" align="center"><button type="button" class="btn btn-primary">Nuevo producto</button></a>
+<a href="/subcategories/edit/<%=@selected_subcategory.id%>"><button type="button" class="btn btn-primary">Editar Sub-categoria</button></a>
+
+  <%end%></h4></br>
+
+
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+    
+        <th>Imagen </th>
+         <th>Nombre  </th>
+        <th>Precio </th>
+      
+     
+    </tr>
+  </thead>
+  <tbody>
+   <% @products.each do |product| %>
+      <tr style='cursor:pointer' onclick=<%="document.location.href='/orders/new/"+product.id.to_s+"'"%>>
+        
+          <td> <%if(product.pictures.size>0)%>
+            <img src="<%=product.pictures.first.picture.url%>" heigth="100" width="100"/>
+          <%end%></td>
+
+          <td>
+          <FONT FACE="raro, courier" SIZE=5 COLOR="gray"> <%=product.name%><br> </FONT>
+          <SUB>codigo: <%=product.code %></SUB>
+        </td>
+        <td><%=product.price%></td>
+      </tr>
+      <%end%>
+  </tbody>
+</table>
+
+
+
+
+
+
+

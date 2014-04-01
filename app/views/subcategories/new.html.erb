@@ -1,0 +1,7 @@
+<h1>Nueva Sub-categoria</h1>
+<h4>Ingrese el nombre de la nueva subcategoria para <%=@category.nombre%>:</h4><br>
+<%= form_for @new_subcategory do |t| %>
+Nombre: <%=t.text_field :name%>
+<%= t.hidden_field :category_id,:value=>@new_subcategory.category_id%>
+<input type="submit" value="Registrar">
+<%end%>

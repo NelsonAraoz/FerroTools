@@ -1,0 +1,6 @@
+<h1 align="center">Nueva Categoria</h1>
+<h4>Introduzca el nombre de la nueva categoria:</h4><br>
+<%= form_for @new_category do |t| %>
+Nombre: <%=t.text_field :nombre%>
+<input type="submit" value="Registrar">
+<%end%>
