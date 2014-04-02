@@ -84,7 +84,7 @@
                   <%end%>
                   <%if(current_user!=nil && current_user.rol=='admin')%>
                   <li><a href="/subcategories/new/<%=category.id%>"><button type="button" class="btn btn-default">Nueva subcategoria</button></a></li>
-                  <li><a href="/categories/edit/<%=category.id%>"><button type="button" class="btn btn-primary">Editar categoria</button></a></li>
+                  <li><a href="/categories/edit/<%=category.id%>"><button type="button" class="btn btn-default">Editar categoria</button></a></li>
                   <%end%>
                   <% category.subcategories.each do |subcategory| %>
                   <%if @selected_subcategory!=nil && @selected_subcategory.id==subcategory.id%>
