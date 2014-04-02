@@ -1,103 +1,102 @@
-2014-04-02T01:10:13.045157+00:00 heroku[router]: at=info method=GET path=/assets/application-fc997dcde5cb05109e3e14983038a753.js host=ferro-tools.herokuapp.com request_id=e966e08f-3ad6-4632-a3b0-e36cf12437f6 fwd="181.114.92.210" dyno=web.1 connect=4ms service=65ms status=304 bytes=231
-2014-04-02T01:10:13.209427+00:00 heroku[router]: at=info method=GET path=/assets/logo.png host=ferro-tools.herokuapp.com request_id=8bb5aa45-c668-4e05-af71-4f3eee2a0914 fwd="181.114.92.210" dyno=web.1 connect=7ms service=75ms status=304 bytes=231
-2014-04-02T01:10:13.309331+00:00 heroku[router]: at=info method=GET path=/assets/back.jpg host=ferro-tools.herokuapp.com request_id=fe63dba0-b1e1-469b-9776-8aab899381b9 fwd="181.114.92.210" dyno=web.1 connect=1ms service=8ms status=304 bytes=231
-2014-04-02T01:10:17.477751+00:00 heroku[router]: at=info method=GET path=/categories/1/1 host=ferro-tools.herokuapp.com request_id=5e8e99b6-d6d3-4d05-a029-19ac128b74a0 fwd="181.114.92.210" dyno=web.1 connect=8ms service=40ms status=200 bytes=7018
-2014-04-02T01:10:17.662286+00:00 heroku[router]: at=info method=GET path=/assets/back.jpg host=ferro-tools.herokuapp.com request_id=bb5a92af-49e1-4d69-8517-483e220b4c95 fwd="181.114.92.210" dyno=web.1 connect=2ms service=6ms status=304 bytes=231
-2014-04-02T01:10:20.555840+00:00 heroku[router]: at=info method=GET path=/orders/new/1 host=ferro-tools.herokuapp.com request_id=c240b21f-6b97-4246-b523-f92d1c9318c8 fwd="181.114.92.210" dyno=web.1 connect=2ms service=43ms status=200 bytes=5767
-2014-04-02T01:10:17.775861+00:00 heroku[router]: at=info method=GET path=/assets/logo.png host=ferro-tools.herokuapp.com request_id=f5541462-2dbc-4296-8554-b0358841c233 fwd="181.114.92.210" dyno=web.1 connect=11ms service=18ms status=304 bytes=231
-2014-04-02T01:10:20.914138+00:00 heroku[router]: at=info method=GET path=/assets/application-fc997dcde5cb05109e3e14983038a753.js host=ferro-tools.herokuapp.com request_id=12e0dc10-73be-4076-bbba-3e47a0a25994 fwd="181.114.92.210" dyno=web.1 connect=2ms service=9ms status=304 bytes=231
-2014-04-02T01:10:20.924430+00:00 heroku[router]: at=info method=GET path=/assets/logo.png host=ferro-tools.herokuapp.com request_id=d9e8e50c-7ec7-4a26-a069-6c100f8dc5e4 fwd="181.114.92.210" dyno=web.1 connect=0ms service=5ms status=304 bytes=231
-2014-04-02T01:10:30.495891+00:00 heroku[router]: at=info method=GET path=/products/edit/1 host=ferro-tools.herokuapp.com request_id=93c2ff84-830e-4ed7-9d1c-c3cc5a8dd580 fwd="181.114.92.210" dyno=web.1 connect=1ms service=27ms status=200 bytes=7143
-2014-04-02T01:10:30.832818+00:00 heroku[router]: at=info method=GET path=/assets/application-fc997dcde5cb05109e3e14983038a753.js host=ferro-tools.herokuapp.com request_id=0710daf1-e0da-4af4-aa1f-4d86c7f0b26c fwd="181.114.92.210" dyno=web.1 connect=1ms service=5ms status=304 bytes=231
-2014-04-02T01:10:31.531509+00:00 heroku[router]: at=info method=GET path=/assets/back.jpg host=ferro-tools.herokuapp.com request_id=8fa50880-9860-4420-865e-e4d63af02776 fwd="181.114.92.210" dyno=web.1 connect=2ms service=7ms status=304 bytes=231
-2014-04-02T01:10:30.850654+00:00 heroku[router]: at=info method=GET path=/assets/logo.png host=ferro-tools.herokuapp.com request_id=a25c3c94-225c-4e3c-be09-4f015a499cf6 fwd="181.114.92.210" dyno=web.1 connect=3ms service=8ms status=304 bytes=231
-2014-04-02T01:10:37.176856+00:00 heroku[router]: at=info method=POST path=/products/1 host=ferro-tools.herok
-uapp.com request_id=050dc72a-9c91-4499-8952-6e0513a50207 fwd="181.114.92.210" dyno=web.1 connect=5ms service=197ms status=500 bytes=1543
-2014-04-02T01:12:55.759410+00:00 heroku[router]: at=info method=GET path=/ host=ferro-tools.herokuapp.com request_id=f5450503-f635-44e7-ab33-9627d8147278 fwd="181.114.92.210" dyno=web.1 connect=1ms service=17ms status=200 bytes=6113
-2014-04-02T01:12:56.025219+00:00 heroku[router]: at=info method=GET path=/assets/logo.png host=ferro-tools.herokuapp.com request_id=dd75685c-554b-4db3-a617-6bdae1763f18 fwd="181.114.92.210" dyno=web.1 connect=1ms service=5ms status=304 bytes=231
-2014-04-02T01:12:56.041622+00:00 heroku[router]: at=info method=GET path=/assets/application-fc997dcde5cb05109e3e14983038a753.js host=ferro-tools.herokuapp.com request_id=fbdaaf81-acd7-434e-8ad3-7819338fd7d2 fwd="181.114.92.210" dyno=web.1 connect=10ms service=9ms status=304 bytes=231
-2014-04-02T01:12:56.304243+00:00 heroku[router]: at=info method=GET path=/assets/back.jpg host=ferro-tools.herokuapp.com request_id=2f33949b-612b-476e-96e1-dd9011d9799f fwd="181.114.92.210" dyno=web.1 connect=8ms service=6ms status=304 bytes=231
-2014-04-02T01:12:59.099125+00:00 heroku[router]: at=info method=GET path=/categories/1/1 host=ferro-tools.herokuapp.com request_id=c635bc8a-fa27-4b5b-9895-67a8b09b303e fwd="181.114.92.210" dyno=web.1 connect=3ms service=32ms status=304 bytes=968
-2014-04-02T01:12:59.269637+00:00 heroku[router]: at=in
-fo method=GET path=/assets/logo.png host=ferro-tools.herokuapp.com request_id=2a0ac2a0-cc47-4020-9c39-c9f68ccbec08 fwd="181.114.92.210" dyno=web.1 connect=3ms service=6ms status=304 bytes=231
-2014-04-02T01:12:59.271349+00:00 heroku[router]: at=info method=GET path=/assets/back.jpg host=ferro-tools.herokuapp.com request_id=6e7577ac-5a20-43fd-835f-928a65484f6c fwd="181.114.92.210" dyno=web.1 connect=2ms service=7ms status=304 bytes=231
-2014-04-02T01:13:01.551311+00:00 heroku[router]: at=info method=GET path=/products/new/1 host=ferro-tools.herokuapp.com request_id=4fbcea18-a0fe-46d6-a9a0-5551326e4475 fwd="181.114.92.210" dyno=web.1 connect=1ms service=73ms status=304 bytes=928
-2014-04-02T01:13:01.720570+00:00 heroku[router]: at=info method=GET path=/assets/logo.png host=ferro-tools.herokuapp.com request_id=9ded9a11-38fa-4831-a148-43daa899b527 fwd="181.114.92.210" dyno=web.1 connect=7ms service=19ms status=304 bytes=231
-2014-04-02T01:13:01.721789+00:00 heroku[router]: at=info method=GET path=/assets/back.jpg host=ferro-tools.herokuapp.com request_id=2dd46c17-d91b-41de-babe-122ad415bfe1 fwd="181.114.92.210" dyno=web.1 connect=4ms service=14ms status=304 bytes=231
-2014-04-02T01:13:08.329505+00:00 app[web.1]: I, [2014-04-02T01:09:30.989628 #2]  INFO -- : Completed 500 Internal Server Error in 22ms
-2014-04-02T01:13:08.329505+00:00 app[web.1]: F, [2014-04-02T01:09:30.991210 #2] FATAL -- : 
-2014-04-02T01:13:08.329505+00:00 app[web.1]: Paperclip::Errors::MissingRequiredValidatorError (Paperclip::Errors::MissingRequiredValidatorError):
-2014-04-02T01:13:08.329505+00:00 app[web.1]:   app/controllers/products_controller.rb:40:in `block in create'
-2014-04-02T01:13:08.329505+00:00 app[web.1]:   app/controllers/products_controller.rb:39:in `each'
-2014-04-02T01:13:08.329505+00:00 app[web.1]:   app/controllers/products_controller.rb:39:in `create'
-2014-04-02T01:13:08.329505+00:00 app[web.1]: 
-2014-04-02T01:13:08.329505+00:00 app[web.1]: 
-2014-04-02T01:13:08.329505+00:00 app[web.1]: I, [2014-04-02T01:10:12.430339 #2]  INFO -- : Started POST "/products" for 181.114.92.210 at 2014-04-02 01:10:12 +0000
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.431956 #2]  INFO -- : Processing by ProductsController#create as HTML
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.432099 #2]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"QpDctsjgM+RziipbtI1csOc0SICltKIYmGACeKcEg3Q=", "product"=>{"name"=>"Prueba", "code"=>"56464", "brand"=>"Prueba", "price"=>"150", "subcategory_id"=>"1"}}
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.441981 #2]  INFO -- : Redirected to http://ferro-tools.herokuapp.com/
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.442290 #2]  INFO -- : Completed 302 Found in 10ms (ActiveRecord: 6.0ms)
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.609261 #2]  INFO -- : Started GET "/" for 181.114.92.210 at 2014-04-02 01:10:12 +0000
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.610582 #2]  INFO -- : Processing by WelcomeController#index as HTML
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.611754 #2]  INFO -- :   Rendered welcome/index.html.erb within layouts/categories (0.1ms)
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:12.618859 #2]  INFO -- : Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 3.0ms)
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:13.042790 #2]  INFO -- : Started GET "/assets/application-fc997dcde5cb05109e3e14983038a753.js" for 181.114.92.210 at 2014-04-02 01:10:13 +0000
-2014-04-02T01:13:08.329818+00:00 app[web.1]: I, [2014-04-02T01:10:13.141318 #2]  INFO -- : Started GET "/assets/logo.png" for 181.114.92.210 at 2014-04-02 01:10:13 +0000
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:17.448422 #2]  INFO -- : Started GET "/categories/1/1" for 181.114.92.210 at 2014-04-02 01:10:17 +0000
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:13.303772 #2]  INFO -- : Started GET "/assets/back.jpg" for 181.114.92.210 at 2014-04-02 01:10:13 +0000
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:17.450203 #2]  INFO -- : Processing by CategoriesController#display as HTML
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:17.450303 #2]  INFO -- :   Parameters: {"id"=>"1", "subid"=>"1"}
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:17.468108 #2]  INFO -- :   Rendered categories/display.html.erb within layouts/categories (10.9ms)
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:17.472928 #2]  INFO -- : Completed 200 OK in 22ms (Views: 9.5ms | ActiveRecord: 9.0ms)
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:17.659899 #2]  INFO -- : Started GET "/assets/back.jpg" for 181.114.92.210 at 2014-04-02 01:10:17 +0000
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:30.475510 #2]  INFO -- :   Parameters: {"id"=>"1"}
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:20.911513 #2]  INFO -- : Started GET "/assets/application-fc997dcde5cb05109e3e14983038a753.js" for 181.114.92.210 at 2014-04-02 01:10:20 +0000
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:30.488480 #2]  INFO -- :   Rendered products/edit.html.erb within layouts/categories (5.4ms)
-2014-04-02T01:13:08.330742+00:00 app[web.1]: I, [2014-04-02T01:10:30.829972 #2]  INFO -- : Started GET "/assets/application-fc997dcde5cb05109e3e14983038a753.js" for 181.114.92.210 at 2014-04-02 01:10:30 +0000
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:20.522535 #2]  INFO -- : Processing by OrdersController#new as HTML
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:20.923336 #2]  INFO -- : Started GET "/assets/logo.png" for 181.114.92.210 at 2014-04-02 01:10:20 +0000
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:30.473220 #2]  INFO -- : Started GET "/products/edit/1" for 181.114.92.210 at 2014-04-02 01:10:30 +0000
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:30.475362 #2]  INFO -- : Processing by ProductsController#edit as HTML
-2014-04-02T01:13:08.330742+00:00 app[web.1]: I, [2014-04-02T01:10:37.162678 #2]  INFO -- : Started PATCH "/products/1" for 181.114.92.210 at 2014-04-02 01:10:37 +0000
-2014-04-02T01:13:08.330742+00:00 app[web.1]: I, [2014-04-02T01:10:37.164495 #2]  INFO -- : Processing by ProductsController#update as HTML
-2014-04-02T01:13:08.330742+00:00 app[web.1]: Paperclip::Errors::MissingRequiredValidatorError (Paperclip::Errors::MissingRequiredValidatorError):
-2014-04-02T01:13:08.331076+00:00 app[web.1]:   app/controllers/products_controller.rb:24:in `update'
-2014-04-02T01:13:08.331076+00:00 app[web.1]: 
-2014-04-02T01:13:08.331076+00:00 app[web.1]: I, [2014-04-02T01:12:55.746880 #2]  INFO -- : Started GET "/" for 181.114.92.210 at 2014-04-02 01:12:55 +0000
-2014-04-02T01:13:08.331076+00:00 app[web.1]: 
-2014-04-02T01:13:08.331076+00:00 app[web.1]: I, [2014-04-02T01:12:56.035060 #2]  INFO -- : Started GET "/assets/application-fc997dcde5cb05109e3e14983038a753.js" for 181.114.92.210 at 2014-04-02 01:12:56 +0000
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:59.089854 #2]  INFO -- :   Rendered categories/display.html.erb within layouts/categories (7.6ms)
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:59.073333 #2]  INFO -- : Started GET "/categories/1/1" for 181.114.92.210 at 2014-04-02 01:12:59 +0000
-2014-04-02T01:13:08.331076+00:00 app[web.1]: I, [2014-04-02T01:12:55.748405 #2]  INFO -- : Processing by WelcomeController#index as HTML
-2014-04-02T01:13:08.331076+00:00 app[web.1]: I, [2014-04-02T01:12:55.749863 #2]  INFO -- :   Rendered welcome/index.html.erb within layouts/categories (0.1ms)
-2014-04-02T01:13:08.331076+00:00 app[web.1]: I, [2014-04-02T01:12:55.757663 #2]  INFO -- : Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 3.2ms)
-2014-04-02T01:13:08.331076+00:00 app[web.1]: I, [2014-04-02T01:12:56.023530 #2]  INFO -- : Started GET "/assets/logo.png" for 181.114.92.210 at 2014-04-02 01:12:56 +0000
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:13:01.482595 #2]  INFO -- : Started GET "/products/new/1" for 181.114.92.210 at 2014-04-02 01:13:01 +0000
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:13:01.485160 #2]  INFO -- : Processing by ProductsController#new as HTML
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:59.075531 #2]  INFO -- :   Parameters: {"id"=>"1", "subid"=>"1"}
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:20.522648 #2]  INFO -- :   Parameters: {"id"=>"1"}
-2014-04-02T01:13:08.330742+00:00 app[web.1]: I, [2014-04-02T01:10:30.846044 #2]  INFO -- : Started GET "/assets/logo.png" for 181.114.92.210 at 2014-04-02 01:10:30 +0000
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:17.765063 #2]  INFO -- : Started GET "/assets/logo.png" for 181.114.92.210 at 2014-04-02 01:10:17 +0000
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:56.301227 #2]  INFO -- : Started GET "/assets/back.jpg" for 181.114.92.210 at 2014-04-02 01:12:56 +0000
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:59.094095 #2]  INFO -- : Completed 200 OK in 18ms (Views: 6.9ms | ActiveRecord: 7.7ms)
-2014-04-02T01:13:08.330011+00:00 app[web.1]: I, [2014-04-02T01:10:20.518818 #2]  INFO -- : Started GET "/orders/new/1" for 181.114.92.210 at 2014-04-02 01:10:20 +0000
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:20.551533 #2]  INFO -- :   Rendered orders/new.html.erb within layouts/application (16.5ms)
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:20.554371 #2]  INFO -- : Completed 200 OK in 32ms (Views: 21.2ms | ActiveRecord: 4.7ms)
-2014-04-02T01:13:08.330540+00:00 app[web.1]: I, [2014-04-02T01:10:30.493721 #2]  INFO -- : Completed 200 OK in 18ms (Views: 9.0ms | ActiveRecord: 5.2ms)
-2014-04-02T01:13:08.330742+00:00 app[web.1]: I, [2014-04-02T01:10:31.527865 #2]  INFO -- : Started GET "/assets/back.jpg" for 181.114.92.210 at 2014-04-02 01:10:31 +0000
-2014-04-02T01:13:08.330742+00:00 app[web.1]: I, [2014-04-02T01:10:37.164647 #2]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"QpDctsjgM+RziipbtI1csOc0SICltKIYmGACeKcEg3Q=", "product"=>{"name"=>"Prueba", "code"=>"56464", "brand"=>"Prueba", "price"=>"150", "picture"=>[#<ActionDispatch::Http::UploadedFile:0x007fa6eed3ebd0 @tempfile=#<Tempfile:/tmp/RackMultipart20140402-2-zh90df>, @original_filename="camara.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"product[picture][]\"; filename=\"camara.png\"\r\nContent-Type: image/png\r\n">], "subcategory_id"=>"1"}, "id"=>"1"}
-2014-04-02T01:13:08.330742+00:00 app[web.1]:   app/controllers/products_controller.rb:25:in `block in update'
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:59.075290 #2]  INFO -- : Processing by CategoriesController#display as HTML
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:59.267645 #2]  INFO -- : Started GET "/assets/back.jpg" for 181.114.92.210 at 2014-04-02 01:12:59 +0000
-2014-04-02T01:13:08.331268+00:00 app[web.1]: I, [2014-04-02T01:12:59.270382 #2]  INFO -- : Started GET "/assets/logo.png" for 181.114.92.210 at 2014-04-02 01:12:59 +0000
-2014-04-02T01:13:08.330742+00:00 app[web.1]: I, [2014-04-02T01:10:37.172475 #2]  INFO -- : Completed 500 Internal Server Error in 8ms
-2014-04-02T01:13:08.330742+00:00 app[web.1]: F, [2014-04-02T01:10:37.174007 #2] FATAL -- : 
-2014-04-02T01:13:08.331076+00:00 app[web.1]:   app/controllers/products_controller.rb:24:in `each'
-2014-04-02T01:13:08.345152+00:00 heroku[router]: at=info method=POST path=/products host=ferro-tools.herokuapp.com request_id=ce3d3f78-8c5f-42af-8499-550d3f3c9bd2 fwd="181.114.92.210" dyno=web.1 connect=1ms service=507ms status=500 bytes=1543
-2014-04-02T01:13:08.331638+00:00 app[web.1]: I, [2014-04-02T01:13:01.712237 #2]  INFO -- : Started GET "/assets/back.jpg" for 181.114.92.210 at 2014-04-02 01:13:01 +0000
-2014-04-02T01:13:08.331638+00:00 app[web.1]: I, [2014-04-02T01:13:01.715893 #2]  INFO -- : Started GET "/assets/logo.png" for 181.114.92.210 at 2014-04-02 01:13:01 +0000
-2014-04-02T01:13:08.331638+00:00 app[web.1]: I, [2014-04-02T01:13:01.539325 #2]  INFO -- :   Rendered products/new.html.erb within layouts/categories (21.0ms)
-2014-04-02T01:13:08.331638+00:00 app[web.1]: I, [2014-04-02T01:13:01.546410 #2]  INFO -- : Completed 200 OK in 61ms (Views: 27.1ms | ActiveRecord: 5.6ms)
-2014-04-02T01:13:08.331638+00:00 app[web.1]: I, [2014-04-02T01:13:01.485282 #2]  INFO -- :   Parameters: {"id"=>"1"}
-2014-04-02T01:13:08.331638+00:00 app[web.1]: I, [2014-04-02T01:13:08.325403 #2]  INFO -- : Started POST "/products" for 181.114.92.210 at 2014-04-02 01:13:08 +0000
-2014-04-02T01:13:08.331638+00:00 app[web.1]: I, [2014-04-02T01:13:08.328257 #2]  INFO -- : Processing by ProductsController#create as HTML
+2014-04-02T01:23:14.735086+00:00 app[web.1]: 	from /app/config.ru:in `new'
+2014-04-02T01:23:14.735162+00:00 app[web.1]: 	from /app/config.ru:in `<main>'
+2014-04-02T01:23:14.735489+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/builder.rb:40:in `parse_file'
+2014-04-02T01:23:14.735648+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:199:in `app'
+2014-04-02T01:23:14.735237+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/builder.rb:49:in `eval'
+2014-04-02T01:23:14.735722+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands/server.rb:48:in `app'
+2014-04-02T01:23:14.735574+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:277:in `build_app_and_options_from_config'
+2014-04-02T01:23:14.735910+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands/server.rb:75:in `start'
+2014-04-02T01:23:14.736060+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands.rb:71:in `tap'
+2014-04-02T01:23:14.735986+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands.rb:76:in `block in <top (required)>'
+2014-04-02T01:23:14.736209+00:00 app[web.1]: 	from bin/rails:4:in `require'
+2014-04-02T01:23:14.735797+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:314:in `wrapped_app'
+2014-04-02T01:23:14.736135+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/li
+b/rails/commands.rb:71:in `<top (required)>'
+2014-04-02T01:23:14.736380+00:00 app[web.1]: 	from bin/rails:4:in `<main>'
+2014-04-02T01:23:14.792262+00:00 app[web.1]: => Booting WEBrick
+2014-04-02T01:23:14.792262+00:00 app[web.1]: => Rails 4.0.1 application starting in production on http://0.0.0.0:32260
+2014-04-02T01:23:14.792262+00:00 app[web.1]: => Run `rails server -h` for more startup options
+2014-04-02T01:23:14.792262+00:00 app[web.1]: => Ctrl-C to shutdown server
+2014-04-02T01:23:14.792262+00:00 app[web.1]: Exiting
+2014-04-02T01:23:16.776836+00:00 heroku[web.1]: Process exited with status 1
+2014-04-02T01:23:16.840931+00:00 heroku[web.1]: State changed from starting to crashed
+2014-04-02T01:23:16.840931+00:00 heroku[web.1]: State changed from crashed to starting
+2014-04-02T01:23:27.299198+00:00 heroku[web.1]: Starting process with command `bin/rails server -p 24508 -e production`
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators.rb:47:in `block in validates_attachment'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/app/models/picture.rb:7:in `<class:Picture>'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: /app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.0.1/lib/active_record/dynamic_matchers.rb:22:in `method_missing': undefined method `before_image_post_process' for Picture(no database connection):Class (NoMethodError)
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators.rb:58:in `block in validate_before_processing'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators.rb:56:in `each'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators.rb:56:in `validate_before_processing'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:229:in `require'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators.rb:65:in `create_validating_before_filter'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/initializable.rb:30:in `run'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:330:in `require_or_load'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:289:in `depend_on'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/engine.rb:462:in `eager_load!'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/engine.rb:347:in `eager_load!'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/engine.rb:462:in `each'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/ruby-2.0.0/lib/ruby/2.0.0/tsort.rb:150:in `block in tsort_each'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:207:in `require_dependency'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/engine.rb:465:in `block (2 levels) in eager_load!'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators/attachment_content_type_validator.rb:84:in `validates_attachment_content_type'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/ruby-2.0.0/lib/ruby/2.0.0/tsort.rb:182:in `block in each_strongly_connected_component'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/engine.rb:464:in `each'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/application/finisher.rb:56:in `block in <module:Finisher>'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/ruby-2.0.0/lib/ruby/2.0.0/tsort.rb:183:in `block (2 levels) in each_strongly_connected_component'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators.rb:37:in `each'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/ruby-2.0.0/lib/ruby/2.0.0/tsort.rb:219:in `each_strongly_connected_component_from'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/initializable.rb:30:in `instance_exec'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:229:in `require'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/engine.rb:464:in `block in eager_load!'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/application/finisher.rb:56:in `each'
+2014-04-02T01:23:32.704138+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/paperclip-4.1.1/lib/paperclip/validators.rb:37:in `validates_attachment'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/app/models/picture.rb:1:in `<top (required)>'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/initializable.rb:54:in `run_initializers'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/railtie/configurable.rb:30:in `method_missing'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:229:in `block in require'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:214:in `load_dependency'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/ruby-2.0.0/lib/ruby/2.0.0/tsort.rb:180:in `each'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/application.rb:215:in `initialize!'
+2014-04-02T01:23:32.704426+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:229:in `require'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/builder.rb:55:in `instance_eval'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/config.ru:3:in `block in <main>'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/ruby-2.0.0/lib/ruby/2.0.0/tsort.rb:148:in `tsort_each'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/config/environment.rb:5:in `<top (required)>'
+2014-04-02T01:23:32.704623+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/initializable.rb:55:in `block in run_initializers'
+2014-04-02T01:23:32.705187+00:00 app[web.1]: 	from /app/vendor/ruby-2.0.0/lib/ruby/2.0.0/tsort.rb:180:in `each_strongly_connected_component'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:229:in `block in require'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/config.ru:in `new'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/config.ru:in `<main>'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/builder.rb:55:in `initialize'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:214:in `load_dependency'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.1/lib/active_support/dependencies.rb:229:in `require'
+2014-04-02T01:23:32.705370+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/builder.rb:49:in `eval'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/builder.rb:49:in `new_from_string'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands/server.rb:48:in `app'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/builder.rb:40:in `parse_file'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands.rb:71:in `tap'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:277:in `build_app_and_options_from_config'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:199:in `app'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/server.rb:314:in `wrapped_app'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands/server.rb:75:in `start'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands.rb:76:in `block in <top (required)>'
+2014-04-02T01:23:32.705712+00:00 app[web.1]: 	from /app/vendor/bundle/ruby/2.0.0/gems/railties-4.0.1/lib/rails/commands.rb:71:in `<top (required)>'
+2014-04-02T01:23:32.705913+00:00 app[web.1]: 	from bin/rails:4:in `require'
+2014-04-02T01:23:32.705913+00:00 app[web.1]: 	from bin/rails:4:in `<main>'
+2014-04-02T01:23:32.730025+00:00 app[web.1]: => Run `rails server -h` for more startup options
+2014-04-02T01:23:32.730025+00:00 app[web.1]: => Booting WEBrick
+2014-04-02T01:23:32.730025+00:00 app[web.1]: => Rails 4.0.1 application starting in production on http://0.0.0.0:24508
+2014-04-02T01:23:32.730025+00:00 app[web.1]: => Ctrl-C to shutdown server
+2014-04-02T01:23:32.730025+00:00 app[web.1]: Exiting
+2014-04-02T01:23:33.926843+00:00 heroku[web.1]: State changed from starting to crashed
+2014-04-02T01:23:33.909697+00:00 heroku[web.1]: Process exited with status 1
+2014-04-02T01:23:34.366185+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/products/edit/1 host=ferro-tools.herokuapp.com request_id=ec79f7a9-4225-46ed-9be0-5c6e2569c958 fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:23:34.848189+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=POST path=/products/1 host=ferro-tools.herokuapp.com request_id=1627ad43-f380-44e6-b3db-b327db917371 fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:23:34.902233+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/products/edit/1 host=ferro-tools.herokuapp.com request_id=8f05dd07-eb35-4742-8326-dde5046a3df7 fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:23:38.960536+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/products/1 host=ferro-tools.herokuapp.com request_id=918ee6aa-ee65-4bec-94a8-2645a0e42dfe fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:23:44.884558+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=ferro-tools.herokuapp.com request_id=c6a4b262-fee1-43dd-8609-f08f074d9e71 fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:23:46.809959+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=ferro-tools.herokuapp.com request_id=785ffd4d-6812-4f26-81dd-78716eed275f fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:24:11.842626+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=ferro-tools.herokuapp.com request_id=968d2e3a-d3bd-434f-8773-2494b786790c fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:24:26.504871+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/assets/back.jpg host=ferro-tools.herokuapp.com request_id=b4549a7e-7222-4a3d-92b1-73774f66bb0a fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
+2014-04-02T01:24:31.582207+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path=/ host=ferro-tools.herokuapp.com request_id=07865638-06fa-444f-8e86-a0f802b8f81f fwd="181.114.92.210" dyno= connect= service= status=503 bytes=
