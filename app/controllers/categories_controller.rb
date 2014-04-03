@@ -1,5 +1,20 @@
 class CategoriesController < ApplicationController
 	layout 'categories'
+  def destroy
+    category=Category.find(params[:id])
+    category.subcategories.each do |subcategory|
+      subcategory.products.each do |product|
+          product.pictures.each do |picture|
+              picture.destroy
+          end
+          product.destroy
+      end
+      subcategory.destroy
+    end
+    category.destroy
+    flash[:alert]="Se elimino la categoria y todo lo relacionado con esta"
+    redirect_to root_path
+  end
   def display
          
    @category=Category.find_by_id(params[:id])

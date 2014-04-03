@@ -1,6 +1,17 @@
 class SubcategoriesController < ApplicationController
 	layout 'categories'
- 
+ def destroy
+  subcategory=Subcategory.find(params[:id])
+  subcategory.products.each do |product|
+          product.pictures.each do |picture|
+              picture.destroy
+          end
+          product.destroy
+      end
+      subcategory.destroy
+      flash[:alert]="Se elimino la sub-categoria y todo lo relacionado con esta"
+    redirect_to root_path
+ end
   def new
     if(current_user.rol=='admin')
     @category=Category.find(params[:id])
@@ -24,7 +35,7 @@ class SubcategoriesController < ApplicationController
      flash[:alert]=params[:subcategory][:category_id]
     @subcategory.save
     flash[:alert]="Sub-categoria creada exitosamente"
-    redirect_to root_path
+    redirect_to "/categories/"+@subcategory.category_id.to_s+"/"+@subcategory.id.to_s
   end
 
 end

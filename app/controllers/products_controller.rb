@@ -8,6 +8,21 @@ class ProductsController < ApplicationController
       redirect_to root_path
     end
   end
+  def view
+    @product=Product.find(params[:prodid])
+    @pictures=@product.pictures
+    @selected_subcategory=Subcategory.find(params[:subid])
+    @category=Category.find(params[:id])
+  end
+  def destroy
+    product=Product.find(params[:id])
+     product.pictures.each do |picture|
+              picture.destroy
+          end
+          product.destroy
+           flash[:alert]="Se elimino el producto y todo lo relacionado con este"
+    redirect_to root_path
+  end
   def edit
     if(current_user.rol=='admin')
     @product=Product.find(params[:id])

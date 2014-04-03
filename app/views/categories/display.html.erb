@@ -1,6 +1,11 @@
 
 <h2><%= @category.nombre %></h2></br>
-<h4><%= @selected_subcategory.name %><%if(current_user!=nil && current_user.rol=='admin')%> <a href="/products/new/<%=@selected_subcategory.id%>" align="center"><button type="button" class="btn btn-primary">Nuevo producto</button></a>
+<h4><%= @selected_subcategory.name %><%if(current_user!=nil && current_user.rol=='admin')%>
+<%= form_for @selected_subcategory, :html => {:method => 'delete'} do |t| %>
+                    <input type="submit" value="Eliminar" class="btn btn-danger" onClick="return confirm('Atencion! se eliminaran todas los productos en esta subcategoria, esta seguro?');">
+                  <%end%>
+
+ <a href="/products/new/<%=@selected_subcategory.id%>" align="center"><button type="button" class="btn btn-primary">Nuevo producto</button></a>
 <a href="/subcategories/edit/<%=@selected_subcategory.id%>"><button type="button" class="btn btn-primary">Editar Sub-categoria</button></a>
 
   <%end%></h4></br>
@@ -20,8 +25,11 @@
   </thead>
   <tbody>
    <% @products.each do |product| %>
+   <%if current_user!=nil && current_user.rol=="admin"%>
+    <tr style='cursor:pointer' onclick="document.location.href='/categories/<%=@category.id.to_s%>/<%=@selected_subcategory.id.to_s%>/<%=product.id.to_s%>'">
+   <%else%>
       <tr style='cursor:pointer' onclick=<%="document.location.href='/orders/new/"+product.id.to_s+"'"%>>
-        
+    <%end%>
           <td> <%if(product.pictures.size>0)%>
             <img src="<%=product.pictures.first.picture.url%>" heigth="100" width="100"/>
           <%end%></td>

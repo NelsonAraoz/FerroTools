@@ -5,13 +5,16 @@ CatalogoVentas::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
    get "categories/new" => "categories#new"
    post "categories/create" => "categories#create"
-      get "categories/edit/:id" => "categories#edit"
+   get "categories/edit/:id" => "categories#edit"
+   post "categories/destroy" => "categories#destroy"
+   post "subcategories/destroy" => "subcategories#destroy"
    post "categories/update" => "categories#update"
    get "subcategories/edit/:id" => "subcategories#edit"
    post "subcategories/update" => "subcategories#update"
    get "pictures/delete/:id" => "pictures#delete"
     get "products/edit/:id" => "products#edit"
     post "products/create" => "products#create"
+     post "products/destroy" => "products#destroy"
    post "orders/create" => "orders#create"
     get "orders/new/:id" => "orders#new"
      get "orders/my_orders" => "orders#my_orders"
@@ -21,16 +24,16 @@ CatalogoVentas::Application.routes.draw do
    post "products/create" => "products#create"
   get "categories/:id" => "categories#display", :as=>"display1"
   get "categories/:id/:subid" => "categories#display", :as=>"display2"
-   get "categories/:id/:subid/:prodid" => "categories#display", :as=>"display3"
+   get "categories/:id/:subid/:prodid" => "products#view", :as=>"display3"
   get "pictures/new" => "pictures#new"
 
   post "pictures/create" => "pictures#create"
   # You can have the root of your site routed with "root"
    root 'welcome#index'
 resources :pictures, only: [:create]
-resources :products, only: [:create,:update]
-resources :categories, only: [:create,:update]
-resources :subcategories, only: [:create,:update]
+resources :products, only: [:create,:update,:destroy]
+resources :categories, only: [:create,:update,:destroy]
+resources :subcategories, only: [:create,:update,:destroy]
 resources :orders, only: [:create]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

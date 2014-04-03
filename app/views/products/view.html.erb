@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col-lg-4">
+		
+		<%if(@pictures.size>0)%>
+    		<% @pictures.each do |picture| %>
+
+      <a href="<%=picture.picture.url%>" rel="group1" data-colorbox-static="true" class="cboxElement"><img src="<%=picture.picture.url%>"  heigth="100" width="100"/></a>
+   			 <%end%>
+			<%end%>
+	</div>
+	<div class="col-lg-4">
+		
+		<div class="page-header">
+		<h2 align="center" id="forms"><%=@product.name%></h2>
+		</div>
+	
+		<table class="table table-striped table-bordered">
+			<tr>
+				<td>Precio</td><td><%=@product.price%></td>
+			</tr>
+			<tr>
+				<td>Marca</td><td><%=@product.brand%></td>
+			</tr>
+			<tr>
+				<td>Stock</td><td><%=@product.stock%></td>
+			</tr>
+		</table>
+		<li><a href="/products/edit/<%=@product.id%>"><button type="button" class="btn btn-default">Editar producto</button></a></li>
+
+
+                  <li><%= form_for @product, :html => {:method => 'delete'} do |t| %>
+                    <input type="submit" value="Eliminar" class="btn btn-danger" onClick="return confirm('Atencion! se eliminaran todas las imagenes referentes a este producto, esta seguro?');">
+                  <%end%></li>
+	</div>
+</div>
