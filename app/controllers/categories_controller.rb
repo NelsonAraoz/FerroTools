@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
     if(params[:subid]!=nil)
       @order=Order.new
       @selected_subcategory=@category.subcategories.find(params[:subid])
-      @products=@selected_subcategory.products
+      @products=@selected_subcategory.products.sort_by{|e| e[:name]}
       if(params[:prodid]!=nil)
         @products=@selected_subcategory.products.where(:id=>params[:prodid])
         @pictures=@products.first.pictures

@@ -22,12 +22,13 @@ class SubcategoriesController < ApplicationController
   end
   def edit
     @subcategory=Subcategory.find(params[:id])
+    @category=@subcategory.category
   end
   def update
     @subcategory=Subcategory.find(params[:id])
     @subcategory.update(params[:subcategory].permit(:name))
     flash[:alert]="Sub-categoria actualizada exitosamente"
-    redirect_to root_path
+    redirect_to "/categories/"+@subcategory.category_id.to_s+"/"+@subcategory.id.to_s
   end
   def create
     params.permit!

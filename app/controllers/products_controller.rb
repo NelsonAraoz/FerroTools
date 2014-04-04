@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   def new
     if(current_user.rol=='admin')
     @new_product=Subcategory.find(params[:id]).products.new
+    @selected_subcategory=@new_product.subcategory
+    @category=@selected_subcategory.category
     @picture=Picture.new
     else
       redirect_to root_path
@@ -27,6 +29,8 @@ class ProductsController < ApplicationController
     if(current_user.rol=='admin')
     @product=Product.find(params[:id])
     @pictures=@product.pictures
+    @selected_subcategory=@product.subcategory
+    @category=@selected_subcategory.category
     else
       redirect_to root_path
     end
@@ -34,7 +38,7 @@ class ProductsController < ApplicationController
   def update
     params.permit!
     @product=Product.find(params[:id])
-    @product.update(params.require(:product).permit(:name,:brand,:code,:price,:subcategory_id))
+    @product.update(params.require(:product).permit(:name,:brand,:code,:price,:subcategory_id,:stock))
     if(!params[:product][:picture].nil?)
     params[:product][:picture].each do |pic|
     @picture=Picture.new(:picture=>pic)
@@ -43,11 +47,11 @@ class ProductsController < ApplicationController
     end
     end
     flash[:alert]="Producto actualizado exitosamente"
-    redirect_to root_path
+    redirect_to "/categories/"+@product.subcategory.category_id.to_s+"/"+@product.subcategory_id.to_s
   end
   def create
     params.permit!
-    @product=Product.new(params.require(:product).permit(:name,:brand,:code,:price,:subcategory_id))
+    @product=Product.new(params.require(:product).permit(:name,:brand,:code,:price,:subcategory_id,:stock))
     # flash[:alert]=params[:subcategory][:category_id]
     @product.save
     if(!params[:product][:picture].nil?)
@@ -58,7 +62,7 @@ class ProductsController < ApplicationController
     end
     end
     flash[:alert]="Producto creado exitosamente"
-    redirect_to root_path
+    redirect_to "/categories/"+@product.subcategory.category_id.to_s+"/"+@product.subcategory_id.to_s
   end
 
 end

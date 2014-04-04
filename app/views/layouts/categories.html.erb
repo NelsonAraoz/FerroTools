@@ -91,7 +91,7 @@
                     <input type="submit" value="Eliminar" class="btn btn-danger" onClick="return confirm('Atencion! se eliminaran todas las subcategorias y productos en estas, esta seguro?');">
                   <%end%></li>
                   <%end%>
-                  <% category.subcategories.each do |subcategory| %>
+                  <% category.subcategories.sort_by{|e| e[:name]}.each do |subcategory| %>
                   <%if @selected_subcategory!=nil && @selected_subcategory.id==subcategory.id%>
                 <li> <a href="/categories/<%=category.id%>/<%=subcategory.id%>" class="list-group-item active"><%=subcategory.name%></a>  </li>
                       <%else%>

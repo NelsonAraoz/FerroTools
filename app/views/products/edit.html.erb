@@ -15,6 +15,7 @@ Nombre: <%=t.text_field :name,:class=>'form-control'%><br>
 Codigo: <%=t.text_field :code,:class=>'form-control'%><br>
 Marca: <%=t.text_field :brand,:class=>'form-control'%><br>
 Precio: <%=t.text_field :price,:class=>'form-control'%><br>
+Stock: <%=t.text_field :stock,:class=>'form-control'%><br>
 <%=t.file_field :picture,:multiple=>true,:class=>'form-control'%><br>
 <%= t.hidden_field :subcategory_id,:value=>@product.subcategory_id%>
 <input type="submit" value="Actualizar">
