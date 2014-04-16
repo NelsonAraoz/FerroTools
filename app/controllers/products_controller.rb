@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
     @pictures=@product.pictures
     @selected_subcategory=Subcategory.find(params[:subid])
     @category=Category.find(params[:id])
+    @order=Order.new
   end
   def destroy
     product=Product.find(params[:id])

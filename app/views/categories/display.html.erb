@@ -25,11 +25,7 @@
   </thead>
   <tbody>
    <% @products.each do |product| %>
-   <%if current_user!=nil && current_user.rol=="admin"%>
     <tr style='cursor:pointer' onclick="document.location.href='/categories/<%=@category.id.to_s%>/<%=@selected_subcategory.id.to_s%>/<%=product.id.to_s%>'">
-   <%else%>
-      <tr style='cursor:pointer' onclick=<%="document.location.href='/orders/new/"+product.id.to_s+"'"%>>
-    <%end%>
           <td> <%if(product.pictures.size>0)%>
             <img src="<%=product.pictures.first.picture.url%>" heigth="100" width="100"/>
           <%end%></td>

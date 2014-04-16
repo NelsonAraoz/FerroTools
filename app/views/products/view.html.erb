@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-4">
-		
+		<h2 align="center">Presione para ver imagen:</h2>
 		<%if(@pictures.size>0)%>
     		<% @pictures.each do |picture| %>
 
@@ -9,6 +9,9 @@
 			<%end%>
 	</div>
 	<div class="col-lg-4">
+		<% if current_user.rol=="regular" %>
+			<h2 align="center">Añadir al carrito</h2>
+		<%end%>
 		
 		<div class="page-header">
 		<h2 align="center" id="forms"><%=@product.name%></h2>
@@ -23,13 +26,30 @@
 			</tr>
 			<tr>
 				<td>Stock</td><td><%=@product.stock%></td>
+
 			</tr>
 		</table>
+		<% if current_user.rol=="admin" %>
 		<li><a href="/products/edit/<%=@product.id%>"><button type="button" class="btn btn-default">Editar producto</button></a></li>
 
 
                   <li><%= form_for @product, :html => {:method => 'delete'} do |t| %>
                     <input type="submit" value="Eliminar" class="btn btn-danger" onClick="return confirm('Atencion! se eliminaran todas las imagenes referentes a este producto, esta seguro?');">
                   <%end%></li>
+                  <%else%>
+                  <h5>Tiempo de entrega: 2 dias laborales</h5>
+                  <li>
+                  		<%= form_for @order do |t| %>
+                  			<td>Cantidad&nbsp;</td><td><%=t.text_field :amount,:size=>"7" %> de <%=@product.stock%> disponibles.<%=t.hidden_field :product_id,:value=>@product.id %></td><br>
+                  			<table align="center" style="background: orange">
+                  			<td >
+                  				&nbsp;ADD<br>
+                  			<input type="image"  src="/assets/carrito.png" alt="Submit Form" height="35" width="35"/>
+                  		</td>
+                  	</table>
+                  		<%end%>
+
+                  </li>
+          <%end%>
 	</div>
 </div>

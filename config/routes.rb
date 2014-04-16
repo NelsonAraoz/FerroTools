@@ -15,6 +15,7 @@ CatalogoVentas::Application.routes.draw do
     get "products/edit/:id" => "products#edit"
     post "products/create" => "products#create"
      post "products/destroy" => "products#destroy"
+        post "orders/destroy" => "orders#destroy"
    post "orders/create" => "orders#create"
     get "orders/new/:id" => "orders#new"
      get "orders/my_orders" => "orders#my_orders"
@@ -26,6 +27,7 @@ CatalogoVentas::Application.routes.draw do
   get "categories/:id/:subid" => "categories#display", :as=>"display2"
    get "categories/:id/:subid/:prodid" => "products#view", :as=>"display3"
   get "pictures/new" => "pictures#new"
+  post "orders/:id" => "orders#update"
 
   post "pictures/create" => "pictures#create"
   # You can have the root of your site routed with "root"
@@ -34,7 +36,7 @@ resources :pictures, only: [:create]
 resources :products, only: [:create,:update,:destroy]
 resources :categories, only: [:create,:update,:destroy]
 resources :subcategories, only: [:create,:update,:destroy]
-resources :orders, only: [:create]
+resources :orders , only: [:create,:update,:destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
