@@ -19,6 +19,7 @@
         <th>Imagen </th>
          <th>Nombre  </th>
         <th>Precio </th>
+        <th>Stock</th>
       
      
     </tr>
@@ -34,7 +35,12 @@
           <FONT FACE="raro, courier" SIZE=5 COLOR="gray"> <%=product.name%><br> </FONT>
           <SUB>codigo: <%=product.code %></SUB>
         </td>
-        <td><%=product.price%></td>
+        <%if(!current_user.nil?)%>
+        <td><%=  product.price %></td>
+        <%else%>
+         <td> Ingrese al sistema </td>
+        <%end%>
+        <td><%=product.stock%></td>
       </tr>
       <%end%>
   </tbody>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322174643) do
+ActiveRecord::Schema.define(version: 20140417003343) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
@@ -25,10 +25,8 @@ ActiveRecord::Schema.define(version: 20140322174643) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "checked",    default: 0, null: false
   end
-
-  add_index "orders", ["product_id"], name: "index_orders_on_product_id"
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "pictures", force: true do |t|
     t.integer  "product_id"

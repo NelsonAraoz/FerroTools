@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
      @order=Order.find(params[:id])
     @order.update(params.require(:order).permit(:amount))
     flash[:alert]="Pedido actualizado exitosamente"
-    redirect_to root_path
+    redirect_to '/orders/my_orders'
   end
 def my_orders
   @orders=current_user.orders
