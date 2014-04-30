@@ -26,25 +26,50 @@ class OrdersController < ApplicationController
     flash[:alert]="se pidio "+@order.amount.to_s+" unidades de "+@product.name
     @order.user_id=current_user.id
     @order.save
+    @product.stock=@product.stock-@order.amount
+    @product.save
     redirect_to root_path
   end
   end
   def destroy
     @order=Order.find(params[:id])
+    @product=Product.find(@order.product_id)
+    @product.stock=@product.stock+@order.amount
+    @product.save
     @order.destroy
     flash[:alert]="Se elimino la orden correctamente"
-    redirect_to 'orders/my_orders'
+    redirect_to '/orders/my_orders'
   end
   def edit
     @order=Order.find(params[:id])
   end
   def update
      @order=Order.find(params[:id])
+
+
+     @product=Product.find(@order.product_id)
+     if(params[:order][:amount].to_i>@product.stock+@order.amount)
+        flash[:alert]="No se cuenta con la cantidad suficiente"
+        redirect_to :back
+     else
+    @product.stock=@product.stock+@order.amount
     @order.update(params.require(:order).permit(:amount))
+    @product.stock=@product.stock-@order.amount
+    @product.save
     flash[:alert]="Pedido actualizado exitosamente"
     redirect_to '/orders/my_orders'
+    end
   end
 def my_orders
   @orders=current_user.orders
+end
+def confirm
+  @my_orders=params[:pedir].to_a
+  @ids=""
+  @my_orders.each do |order|
+    @ids=@ids+order.to_s
+  end
+  flash[:alert]=@ids
+    redirect_to '/orders/my_orders'
 end
 end

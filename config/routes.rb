@@ -1,4 +1,6 @@
 CatalogoVentas::Application.routes.draw do
+  resources :locations
+
   devise_for :users#, controllers: {registrations: 'registrations'}
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -27,6 +29,7 @@ CatalogoVentas::Application.routes.draw do
   get "categories/:id/:subid" => "categories#display", :as=>"display2"
    get "categories/:id/:subid/:prodid" => "products#view", :as=>"display3"
   get "pictures/new" => "pictures#new"
+  post "orders/confirm_order" => "orders#confirm"
   post "orders/:id" => "orders#update"
 
   post "pictures/create" => "pictures#create"
