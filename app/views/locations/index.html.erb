@@ -57,7 +57,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   handler.fitMapToBounds();
   handler.getMap().setZoom(15);
   google.maps.event.addListener(handler.getMap(), "dblclick", function( evt ) {
-      alert(evt.latitude);
+       alert("Latitud: "+evt.latLng.lat()+" Longitud: "+evt.latLng.lng());
 });
 });
 
