@@ -61,15 +61,18 @@ class OrdersController < ApplicationController
     end
   end
 def my_orders
-  @orders=current_user.orders
+  @orders=current_user.orders.where(:checked=>false)
 end
 def confirm
   @my_orders=params[:pedir].to_a
-  @ids=""
   @my_orders.each do |order|
-    @ids=@ids+order.to_s
+    o=Order.find(order.to_s)
+    if(o.user_id==current_user.id)
+    o.checked=true
+    o.save
+    end
   end
-  flash[:alert]=@ids
+  flash[:alert]="Se realizo el pedido correctamente"
     redirect_to '/orders/my_orders'
 end
 end
