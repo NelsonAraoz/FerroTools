@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
 
 </head>
-<body style='background-image: url("http://127.0.0.1:3000/assets/back.jpg")'>
+<body style="background-color:#f2701a;">
 
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-default">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
       <span class="icon-bar"></span>
@@ -21,8 +21,17 @@
   <div class="navbar-collapse collapse navbar-inverse-collapse">
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-          <div class=col-lg-1>
-      </div>
+      <%if current_user!=nil && current_user.rol!="admin"%>
+       <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mis pedidos<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+              <li><a href="/orders/my_orders">Carrito</a></li>
+          <li><a href="/orders/my_checked_orders">Pedidos realizados</a></li>
+        
+        </ul>
+      </li>
+      <li class="active"><a href="/locations">Mis direcciones</a></li>
+      <%end%>
     <li>
     <form class="navbar-form navbar-right">
       <input type="text" class="form-control col-lg-10" placeholder="Buscar">
@@ -32,7 +41,17 @@
     
     <ul class="nav nav-pills pull-right">
   <% if user_signed_in? %>
-    <li  class="active"><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
+  <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=current_user.name+" "+current_user.lastname%><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+              <li><a href="/users/edit">Editar datos</a></li>
+          <li  ><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
+        
+        </ul>
+      </li>
+
+
+    
   <% else %>
     <li  class="active"><%= link_to "Ingresar", new_user_session_path %></li>
     <li  class="active"><%= link_to "Registrate", new_user_registration_path %></li>
@@ -59,7 +78,7 @@
 <div class="col-lg-2">
 </div>
 <div class="col-lg-8">
-<div class="jumbotron">
+<div class="jumbotron" style="color:black;">
   
   <%=yield%>
 </div>

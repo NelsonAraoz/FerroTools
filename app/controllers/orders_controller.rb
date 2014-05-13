@@ -67,7 +67,16 @@ class OrdersController < ApplicationController
       redirect_to '/orders/my_orders'
   end
 def my_orders
-  @orders=current_user.orders.where(:checked=>false)
+  if(current_user==nil || current_user.rol!="regular")
+    redirect_to root_path
+  else
+    @orders=current_user.orders.where(:checked=>false)
+    @locations=current_user.locations
+    if(@locations.size==0)
+      flash[:alert]="debe registrar por lo menos una direccion antes de hacer un pedido"
+      redirect_to "/locations/new"
+    end
+  end
 end
 def my_checked_orders
   @orders=current_user.orders.where(:checked=>true)

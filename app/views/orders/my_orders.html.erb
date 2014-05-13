@@ -39,7 +39,7 @@
 			</tr>
 		<%end%>
 		</table>
-		<%=select_tag :location,options_from_collection_for_select(Location.all, "id", "address")%>
+		<%=select_tag :location,options_from_collection_for_select(current_user.locations, "id", "address")%>
 		<input type="submit" value="Pedir" class = "btn btn-primary">
 		</form>
 	</div>

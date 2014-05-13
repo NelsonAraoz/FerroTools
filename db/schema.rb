@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513164525) do
+ActiveRecord::Schema.define(version: 20140513192910) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140513164525) do
     t.boolean  "gmaps"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "orders", force: true do |t|
