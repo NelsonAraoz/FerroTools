@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430013437) do
+ActiveRecord::Schema.define(version: 20140513164525) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 20140430013437) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "checked",    default: 0, null: false
+    t.integer  "checked",     default: 0, null: false
+    t.integer  "location_id"
   end
 
   create_table "pictures", force: true do |t|

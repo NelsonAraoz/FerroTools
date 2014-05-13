@@ -5,8 +5,25 @@
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 <%= form_for @location do |t| %>
-Direcion<%=t.text_field :address,:size=>"35" %>#<%=t.text_field :number,:size=>"5" %><%=t.text_field :latitude,:id=>"latitude" %><%=t.text_field :longitude,:id=>"longitude" %>
-<input type="submit" value="registrar">
+<div class="row">
+  <div class="col-lg-6">
+Direccion<%=t.text_field :address,:size=>"35",:class=>'form-control' %>
+</div>
+<div class="col-lg-3">
+#(Numero de casa)<%=t.text_field :number,:size=>"5",:class=>'form-control' %>
+</div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+Latitud:
+<%=t.text_field :latitude,:id=>"latitude",:class=>'form-control' %>
+</div>
+<div class="col-lg-6">
+  Longitud:
+<%=t.text_field :longitude,:id=>"longitude",:class=>'form-control' %>
+</div>
+</div>
+<input type="submit" value="registrar" class="btn btn-primary">
 <%end%>
 
 <%= link_to 'Back', locations_path %>

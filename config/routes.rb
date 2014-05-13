@@ -21,6 +21,7 @@ CatalogoVentas::Application.routes.draw do
    post "orders/create" => "orders#create"
     get "orders/new/:id" => "orders#new"
      get "orders/my_orders" => "orders#my_orders"
+     get "orders/my_checked_orders" => "orders#my_checked_orders"
     get "subcategories/new/:id" => "subcategories#new"
    post "subcategories/create" => "categories#create"
      get "products/new/:id" => "products#new"
@@ -29,6 +30,7 @@ CatalogoVentas::Application.routes.draw do
   get "categories/:id/:subid" => "categories#display", :as=>"display2"
    get "categories/:id/:subid/:prodid" => "products#view", :as=>"display3"
   get "pictures/new" => "pictures#new"
+  post "orders/uncheck/:id" => "orders#uncheck", :as => "uncheck"
   post "orders/confirm_order" => "orders#confirm"
   post "orders/:id" => "orders#update"
 

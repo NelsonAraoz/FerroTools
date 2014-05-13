@@ -60,8 +60,17 @@ class OrdersController < ApplicationController
     redirect_to '/orders/my_orders'
     end
   end
+  def uncheck
+    @order=Order.find(params[:id])
+      @order.checked=false
+      @order.save
+      redirect_to '/orders/my_orders'
+  end
 def my_orders
   @orders=current_user.orders.where(:checked=>false)
+end
+def my_checked_orders
+  @orders=current_user.orders.where(:checked=>true)
 end
 def confirm
   @my_orders=params[:pedir].to_a
@@ -69,6 +78,7 @@ def confirm
     o=Order.find(order.to_s)
     if(o.user_id==current_user.id)
     o.checked=true
+    o.location_id=params[:location].to_s
     o.save
     end
   end
