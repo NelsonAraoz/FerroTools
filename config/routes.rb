@@ -21,6 +21,7 @@ CatalogoVentas::Application.routes.draw do
    post "orders/create" => "orders#create"
     get "orders/new/:id" => "orders#new"
      get "orders/my_orders" => "orders#my_orders"
+     get "orders/all_orders" => "orders#all_orders"
      get "orders/my_checked_orders" => "orders#my_checked_orders"
     get "subcategories/new/:id" => "subcategories#new"
    post "subcategories/create" => "categories#create"

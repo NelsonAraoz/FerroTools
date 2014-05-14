@@ -81,6 +81,10 @@ end
 def my_checked_orders
   @orders=current_user.orders.where(:checked=>true)
 end
+def all_orders
+  @locations=Location.all
+  @orders=Order.where(:checked=>true)
+  end
 def confirm
   @my_orders=params[:pedir].to_a
   @my_orders.each do |order|
