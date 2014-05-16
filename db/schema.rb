@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513192910) do
+ActiveRecord::Schema.define(version: 20140515193937) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140513192910) do
     t.datetime "updated_at"
     t.integer  "checked",     default: 0, null: false
     t.integer  "location_id"
+    t.integer  "sended",      default: 0, null: false
   end
 
   create_table "pictures", force: true do |t|

@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 	 layout 'categories'
+    skip_before_filter :verify_authenticity_token  
   def new
     if(current_user!=nil && current_user.rol=='admin')
     @product=Product.find(params[:id])
@@ -82,9 +83,14 @@ def my_checked_orders
   @orders=current_user.orders.where(:checked=>true)
 end
 def all_orders
+  if(current_user!=nil && current_user.rol=="admin")
   @locations=Location.all
-  @orders=Order.where(:checked=>true)
+  @orders=Order.where(:checked=>true,:sended=>false)
+else 
+  redirect_to root_path
+end
   end
+
 def confirm
   @my_orders=params[:pedir].to_a
   @my_orders.each do |order|
@@ -98,4 +104,16 @@ def confirm
   flash[:alert]="Se realizo el pedido correctamente"
     redirect_to '/orders/my_orders'
 end
+
+  def confirm_order_send
+    @my_orders=params[:llevar].to_a
+   @my_orders.each do |order|
+    o=Order.find(order.to_s)
+    o.sended=true
+    o.save
+  end
+   flash[:alert]="Se realizo el cambio correctamente"
+    redirect_to root_path
+  end
+
 end

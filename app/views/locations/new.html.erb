@@ -35,11 +35,6 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     {
       "lat":   -17.39435,
       "lng": -66.16435,
-      "picture": {
-        "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-        "width":  36,
-        "height": 36
-      },
       "infowindow": "Cochabamba, Bolivia"
     }
   ]);
@@ -47,9 +42,24 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   handler.fitMapToBounds();
   handler.getMap().setZoom(15);
   google.maps.event.addListener(handler.getMap(), "dblclick", function( evt ) {
+
   	document.getElementById("latitude").value=evt.latLng.lat();
   	document.getElementById("longitude").value=evt.latLng.lng();
-       //alert("Latitud: "+evt.latLng.lat()+" Longitud: "+evt.latLng.lng());
+ 
+    //markers[0].lat=evt.latLng.lat();
+    // markers[0].lng=evt.latLng.lng();
+
+    //markers.clear();
+ // clearOverlays();
+    markers = handler.addMarkers([
+    {
+      "lat":   evt.latLng.lat(),
+      "lng": evt.latLng.lng(),
+      "infowindow": "Enviar aqui!"
+    }
+
+  ]);
+       
 });
 });
 

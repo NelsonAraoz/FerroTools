@@ -32,7 +32,9 @@ CatalogoVentas::Application.routes.draw do
    get "categories/:id/:subid/:prodid" => "products#view", :as=>"display3"
   get "pictures/new" => "pictures#new"
   post "orders/uncheck/:id" => "orders#uncheck", :as => "uncheck"
+  post "orders/confirm_order_send" => "orders#confirm_order_send"
   post "orders/confirm_order" => "orders#confirm"
+
   post "orders/:id" => "orders#update"
 
   post "pictures/create" => "pictures#create"
