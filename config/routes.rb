@@ -23,6 +23,7 @@ CatalogoVentas::Application.routes.draw do
      get "orders/my_orders" => "orders#my_orders"
      get "orders/all_orders" => "orders#all_orders"
      get "orders/my_checked_orders" => "orders#my_checked_orders"
+     get "orders/my_sended_orders" => "orders#my_sended_orders"
     get "subcategories/new/:id" => "subcategories#new"
    post "subcategories/create" => "categories#create"
      get "products/new/:id" => "products#new"
@@ -32,14 +33,20 @@ CatalogoVentas::Application.routes.draw do
    get "categories/:id/:subid/:prodid" => "products#view", :as=>"display3"
   get "pictures/new" => "pictures#new"
   post "orders/uncheck/:id" => "orders#uncheck", :as => "uncheck"
+  post "orders/uncheck_send/:id" => "orders#uncheck_send", :as => "uncheck_send"
   post "orders/confirm_order_send" => "orders#confirm_order_send"
   post "orders/confirm_order" => "orders#confirm"
 
   post "orders/:id" => "orders#update"
 
   post "pictures/create" => "pictures#create"
+  
+  get "locations/login/:name/:pass" => "locations#login"
+
+
   # You can have the root of your site routed with "root"
    root 'welcome#index'
+  resources :users, only: [:create,:update,:destroy] 
 resources :pictures, only: [:create]
 resources :products, only: [:create,:update,:destroy]
 resources :categories, only: [:create,:update,:destroy]

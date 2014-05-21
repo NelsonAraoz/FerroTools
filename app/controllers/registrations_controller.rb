@@ -5,7 +5,12 @@ class RegistrationsController < Devise::RegistrationsController
 	def create
 		super
 	end
+	def edit
+		@user=current_user
+	end
 	def update
-		super
+		#super
+		current_user.nombre=params[:user][:nombre]
+		current_user.save
 	end
 end

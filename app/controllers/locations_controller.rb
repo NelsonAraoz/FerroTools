@@ -1,10 +1,18 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :json, :xml
   # GET /locations
   # GET /locations.json
   def index
     @locations = current_user.locations
+    respond_with @locations
+  end
+  def login
+    if(params[:name]=="pedro" && params[:pass]=="pedro")
+      respond_with '{"res": true}'
+    else
+      respond_with '{"res": false}'
+    end
   end
 
   # GET /locations/1

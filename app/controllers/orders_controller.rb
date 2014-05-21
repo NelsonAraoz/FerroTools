@@ -67,6 +67,12 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to '/orders/my_orders'
   end
+  def uncheck_send
+    @order=Order.find(params[:id])
+      @order.sended=false
+      @order.save
+      redirect_to '/orders/all_orders'
+  end
 def my_orders
   if(current_user==nil || current_user.rol!="regular")
     redirect_to root_path
@@ -82,6 +88,15 @@ end
 def my_checked_orders
   @orders=current_user.orders.where(:checked=>true)
 end
+def my_sended_orders
+  if(current_user!=nil && current_user.rol=="admin")
+  @locations=Location.all
+  @orders=Order.where(:checked=>true,:sended=>true)
+else 
+  redirect_to root_path
+end
+end
+
 def all_orders
   if(current_user!=nil && current_user.rol=="admin")
   @locations=Location.all
