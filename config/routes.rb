@@ -40,7 +40,8 @@ CatalogoVentas::Application.routes.draw do
   post "orders/:id" => "orders#update"
 
   post "pictures/create" => "pictures#create"
-  
+  get "users/change_password" => "users#change_password"
+  post "users/update_password" => "users#update_password"
   get "locations/login/:name/:pass" => "locations#login"
 
 

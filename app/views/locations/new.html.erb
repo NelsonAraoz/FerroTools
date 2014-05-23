@@ -45,12 +45,8 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
   	document.getElementById("latitude").value=evt.latLng.lat();
   	document.getElementById("longitude").value=evt.latLng.lng();
- 
-    //markers[0].lat=evt.latLng.lat();
-    // markers[0].lng=evt.latLng.lng();
-
-    //markers.clear();
- // clearOverlays();
+handler.removeMarkers(markers);
+    
     markers = handler.addMarkers([
     {
       "lat":   evt.latLng.lat(),

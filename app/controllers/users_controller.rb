@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	skip_before_filter :verify_authenticity_token 
 def update
 		#super
 		current_user.name=params[:user][:name]
@@ -15,6 +16,7 @@ def update
  end
 
  def update_password
- 	
+ 	flash[:alert]=current_user.change_password(params[:actual])
+ 	redirect_to root_path
  end
 end

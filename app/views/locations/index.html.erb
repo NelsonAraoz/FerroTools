@@ -7,7 +7,7 @@
       <th>Longitud</th>
       <th>Latitud</th>
       <th></th>
-      
+      <th></th>
     </tr>
   </thead>
 
@@ -18,8 +18,9 @@
         <td><%= location.address %></td>
         <td><%= location.longitude %></td>
         <td><%= location.latitude %></td>
-        <td><%= link_to 'Editar', edit_location_path(location) %></td>
-        
+        <td><%= link_to 'Editar', edit_location_path(location),'data-no-turbolink' => true %></td>
+        <td><%= link_to 'Ver', '/locations/'+location.id.to_s,'data-no-turbolink' => true %>
+        </td>
       </tr>
     <% end %>
   </tbody>
