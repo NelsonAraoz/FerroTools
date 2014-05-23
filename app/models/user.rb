@@ -19,8 +19,5 @@ class User < ActiveRecord::Base
 		:allow_blank => TRUE
 	}
 	
-	def change_password(oldpass)
-		return valid_password?(oldpass)
-	end
-
+	 
 end

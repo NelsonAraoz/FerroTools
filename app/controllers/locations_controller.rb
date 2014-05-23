@@ -19,10 +19,14 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     @location=Location.find(params[:id])
+    if @location.user_id==current_user.id
     @hash = Gmaps4rails.build_markers(@location) do |l, marker|
   marker.lat l.latitude
   marker.lng l.longitude
   marker.infowindow l.address.to_s+"# "+l.number.to_s
+end
+else
+redirect_to root_path
 end
   end
 
