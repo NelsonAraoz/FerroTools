@@ -1,0 +1,68 @@
+<%= form_for(@presentation) do |f| %>
+  <% if @presentation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@presentation.errors.count, "error") %> prohibited this presentation from being saved:</h2>
+
+      <ul>
+      <% @presentation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content,:size=>'85x25' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+function insertImage()
+{
+$('textarea').sceditor('instance').insert('[img]http://img2.wikia.nocookie.net/__cb20140207202456/es.pokemon/images/5/56/Charmander.png[/img]');
+}
+      // Source: http://www.backalleycoder.com/2011/03/20/link-tag-css-stylesheet-load-event/
+      var loadCSS = function(url, callback){
+        var link = document.createElement('link');
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = url;
+        link.id = 'theme-style';
+
+        document.getElementsByTagName('head')[0].appendChild(link);
+
+        var img = document.createElement('img');
+        img.onerror = function(){
+          if(callback) callback(link);
+        }
+        img.src = url;
+      }
+
+      $(document).ready(function() {
+        var initEditor = function() {
+          $("textarea").sceditor({
+            plugins: 'bbcode',
+            style: "/assets/jquery.sceditor.default.min.css"
+
+          });
+
+        };
+
+        $("#theme").change(function() {
+          var theme = "/assets/" + $(this).val() + ".min.css";
+
+          $("textarea").sceditor("instance").destroy();
+          $("link:first").remove();
+          $("#theme-style").remove();
+
+          loadCSS(theme, initEditor);
+        });
+
+        initEditor();
+      });
+    </script>
+

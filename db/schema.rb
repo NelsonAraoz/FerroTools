@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515193937) do
+ActiveRecord::Schema.define(version: 20140807161652) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "index", force: true do |t|
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,6 +47,9 @@ ActiveRecord::Schema.define(version: 20140515193937) do
     t.integer  "sended",      default: 0, null: false
   end
 
+  add_index "orders", ["product_id"], name: "index_orders_on_product_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
   create_table "pictures", force: true do |t|
     t.integer  "product_id"
     t.datetime "created_at"
@@ -52,6 +61,12 @@ ActiveRecord::Schema.define(version: 20140515193937) do
   end
 
   add_index "pictures", ["product_id"], name: "index_pictures_on_product_id"
+
+  create_table "presentations", force: true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"

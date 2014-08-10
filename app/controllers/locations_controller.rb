@@ -19,7 +19,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     @location=Location.find(params[:id])
-    if @location.user_id==current_user.id
+    if @location.user_id==current_user.id || (current_user!=nil && current_user.rol=="admin")
     @hash = Gmaps4rails.build_markers(@location) do |l, marker|
   marker.lat l.latitude
   marker.lng l.longitude

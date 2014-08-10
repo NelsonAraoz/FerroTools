@@ -1,4 +1,5 @@
 CatalogoVentas::Application.routes.draw do
+
   resources :locations
 
   devise_for :users#, controllers: {registrations: 'registrations'}
@@ -43,12 +44,14 @@ CatalogoVentas::Application.routes.draw do
   get "users/change_password" => "users#change_password"
   post "users/update_password" => "users#update_password"
   get "locations/login/:name/:pass" => "locations#login"
-
-
+  get 'presentations/edit' => 'presentations#edit'
+  post 'presentations/update' => 'presentations#update'
+  get 'presentations/show' => 'presentations#show'
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+   root 'presentations#show'
   resources :users, only: [:create,:update,:destroy] 
 resources :pictures, only: [:create]
+resources :presentations, only: [:update]
 resources :products, only: [:create,:update,:destroy]
 resources :categories, only: [:create,:update,:destroy]
 resources :subcategories, only: [:create,:update,:destroy]

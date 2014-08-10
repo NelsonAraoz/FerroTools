@@ -1,0 +1,60 @@
+<script>
+var loadCSS = function(url, callback){
+        var link = document.createElement('link');
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = url;
+        link.id = 'theme-style';
+
+        document.getElementsByTagName('head')[0].appendChild(link);
+
+        var img = document.createElement('img');
+        img.onerror = function(){
+          if(callback) callback(link);
+        }
+        img.src = url;
+      }
+$(document).ready(function() {
+        var initEditor = function() {
+          $("textarea").sceditor({
+            plugins: 'bbcode',
+            style: "/assets/jquery.sceditor.default.min.css"
+          });
+
+    var html = $("textarea").sceditor('instance').fromBBCode("<%= escape_javascript(@presentation.content)%>");
+
+  var nestedDiv = document.getElementById("nested");
+    nestedDiv.innerHTML = html;
+
+        };
+
+        $("#theme").change(function() {
+          var theme = "/assets/" + $(this).val() + ".min.css";
+
+          $("textarea").sceditor("instance").destroy();
+          $("link:first").remove();
+          $("#theme-style").remove();
+
+          loadCSS(theme, initEditor);
+        });
+
+        initEditor();
+      });
+
+     
+    </script>
+
+
+
+<p id="notice"><%= notice %></p>
+<div style="display:none;">
+<textarea></textarea>
+</div>
+  <div id="nested">
+  </div>
+  <%if current_user!=nil && current_user.rol=="admin"%>
+<%=link_to "Editar", "/presentations/edit"%>
+  <%end%>
+
+
+
