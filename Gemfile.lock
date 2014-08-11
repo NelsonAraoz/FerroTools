@@ -151,8 +151,6 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
 
-PLATFORMS
-  x86-mingw32
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
