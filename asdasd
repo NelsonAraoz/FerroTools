@@ -1,0 +1,105 @@
+2014-08-11T00:14:16.440282+00:00 app[web.1]: 
+2014-08-11T00:14:16.440286+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+2014-08-11T00:14:16.440292+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-4.0.1/lib/rails/rack/logger.rb:20:in `block in call'
+2014-08-11T00:14:16.440288+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+2014-08-11T00:14:16.440296+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-4.0.1/lib/active_support/tagged_logging.rb:25:in `tagged'
+2014-08-11T00:14:16.440274+00:00 app[web.1]: 
+2014-08-11T00:14:16.440304+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+2014-08-11T00:14:16.440276+00:00 app[web.1]: 
+2014-08-11T00:14:16.440290+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-4.0.1/lib/rails/rack/logger.rb:38:in `call_app'
+2014-08-11T00:14:16.440294+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+2014-08-11T00:14:16.440303+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+2014-08-11T00:14:16.440336+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-4.0.1/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+2014-08-11T00:14:16.440338+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/static.rb:64:in `call'
+2014-08-11T00:14:16.440341+00:00
+ app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-4.0.1/lib/rails/engine.rb:511:in `call'
+2014-08-11T00:14:16.440299+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-4.0.1/lib/rails/rack/logger.rb:20:in `call'
+2014-08-11T00:14:16.440297+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/activesupport-4.0.1/lib/active_support/tagged_logging.rb:67:in `tagged'
+2014-08-11T00:14:16.440343+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/railties-4.0.1/lib/rails/application.rb:97:in `call'
+2014-08-11T00:14:16.440345+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+2014-08-11T00:14:16.440349+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+2014-08-11T00:14:16.440340+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+2014-08-11T00:14:16.440351+00:00 app[web.1]:   vendor/ruby-1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+2014-08-11T00:14:16.440354+00:00 app[web.1]:   vendor/ruby-1.9.3/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+2014-08-11T00:14:16.440306+00:00 app[web.1]:   vendor/bundle/ruby/1.9.1/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+2014-08-11T00:14:16.440353+00:00 app[web.1]:   vendor/ruby-1.9.3/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+2014-08-11T00:14:16.440356+00:00 app[web.1]: 
+2014-08-11T00:14:16.440347+00:00 app[web.1]
+:   vendor/bundle/ruby/1.9.1/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+2014-08-11T00:14:16.440358+00:00 app[web.1]: 
+2014-08-11T00:14:21.329640+00:00 heroku[router]: sock=client at=error code=H18 desc="Request Interrupted" method=GET path="/" host=ferro-tools.herokuapp.com request_id=5700fa99-1426-4ba6-bf8f-851e3007d530 fwd="181.114.70.55" dyno=web.1 connect=1ms service=230ms status=503 bytes=1265
+2014-08-11T00:14:21.102833+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:21 +0000
+2014-08-11T00:14:21.102845+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:21 +0000
+2014-08-11T00:14:21.115230+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (5.6ms)
+2014-08-11T00:14:21.104603+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:21.104587+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:21.324328+00:00 app[web.1]: Completed 200 OK in 219ms (Views: 151.9ms | ActiveRecord: 65.2ms)
+2014-08-11T00:14:21.115241+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (5.6ms)
+2014-08-11T00:14:21.326200+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:21 +0000
+2014-08-11T00:14:21.326193+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:21 +0000
+2014-08-11T00:14:21.324203+00:00 app[web.1]: Completed 200 OK 
+in 219ms (Views: 151.9ms | ActiveRecord: 65.2ms)
+2014-08-11T00:14:21.327284+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:21.327463+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:21.332921+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (2.6ms)
+2014-08-11T00:14:21.332928+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (2.6ms)
+2014-08-11T00:14:21.517765+00:00 heroku[router]: at=info method=GET path="/" host=ferro-tools.herokuapp.com request_id=a86837c1-5ae3-4413-9106-ff8ad25905ba fwd="181.114.70.55" dyno=web.1 connect=1ms service=242ms status=200 bytes=1214
+2014-08-11T00:14:21.511763+00:00 app[web.1]: Completed 200 OK in 184ms (Views: 113.0ms | ActiveRecord: 69.8ms)
+2014-08-11T00:14:21.511772+00:00 app[web.1]: Completed 200 OK in 184ms (Views: 113.0ms | ActiveRecord: 69.8ms)
+2014-08-11T00:14:22.500928+00:00 heroku[router]: at=info method=GET path="/assets/application-d6873babe91d1580df4ef39a8bb00550.js" host=ferro-tools.herokuapp.com request_id=7684b309-d3b5-4b33-a2d6-76a3bd45e851 fwd="181.114.70.55" dyno=web.1 connect=1ms service=4ms status=304 bytes=1317
+2014-08-11T00:14:22.528082+00:00 heroku[router]: at=info method=GET path="/assets/slide2.jpg" host=ferro-tools.herokuapp.com request_id=6e70ba94-4016-4ad7-8cfe-1e13c17861f7 fwd="181.114.70.55" dyno=web.1 connect=1ms service=6ms status=304 bytes=1348
+2014-08-11T00:14:22.541458+00:00 heroku[router]: at=info method=GET path="/assets/logo.png" host=ferro-tools.herokuapp.com request_id=0ed7bef5-bc33-45fc-9144-9dc05ddb9161 fwd="181.114.70.55" dyno=web.1 connect=1ms service=8ms status=304 bytes=1346
+2014-08-11T00:14:22.518309+00:00 heroku[router]: at=info method=GET path="/assets/slide1.jpg" host=ferro-tools.herokuapp.com request_id=6f89be15-1b55-4c21-b58d-340866d9d7a5 fwd="181.114.70.55" dyno=web.1 connect=1ms service=7ms status=304 bytes=1348
+2014-08-11T00:14:22.525353+00:00 app[web.1]: Started GET "/assets/slide2.jpg" for 181.114.70.55 at 2014-08-11 00:14:22 +0000
+2014-08-11T00:14:22.517748+00:00 app[web.1]: Started GET "/assets/slide1.jpg" for 181.114.70.55 at 2014-08-11 00:14:22 +0000
+2014-08-11T00:14:22.525343+00:00 app[web.1]: Started GET "/assets/slide2.jpg" for 181.114.70.55 at 2014-08-11 00:14:22 +0000
+2014-08-11T00:14:22.517698+00:00 app[web.1]: Started GET "/assets/slide1.jpg" for 181.114.70.55 at 2014-08-11 00:14:22 +0000
+2014-08-11T00:14:22.537552+00:00 app[web.1]: Started GET "/assets/logo.png" for 181.114.70.55 at 2014-08-11 00:14:22 +0000
+2014-08-11T00:14:22.537540+00:00 app[web.1]: Started GET "/assets/logo.png" for 181.114.70.55 at 2014-08-11 00:14:22 +0000
+2014-08-11T00:14:32.805850+00:00 heroku[router]: at=info method=GET path="/" host=ferro-tools.herokuapp.com request_id=70628f4f-8daf-436a-8eb6-33a27c8b46d4 fwd="181.114.70.55" dyno=web.1 connect=1ms service=192ms status=304 bytes=1265
+2014-08-11T00:14:32.617443+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:32.799679+00:00 app[web.1]: Completed 200 OK in 182ms (Views: 86.5ms | ActiveRecord: 93.9ms)
+2014-08-11T00:14:32.799853+00:00 app[web.1]: Completed 200 OK in 182ms (Views: 86.5ms | ActiveRecord: 93.9ms)
+2014-08-11T00:14:32.630098+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (2.5ms)
+2014-08-11T00:14:32.616269+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:32 +0000
+2014-08-11T00:14:32.630086+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (2.5ms)
+2014-08-11T00:14:32.617435+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:32.616369+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:32 +0000
+2014-08-11T00:14:32.803750+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:32.802353+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:32 +0000
+2014-08-11T00:14:32.810733+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (3.3ms)
+2014-08-11T00:14:32.803756+00:00 app[web.1]: Processing by PresentationsController#show as HTML
+2014-08-11T00:14:32.810744+00:00 app[web.1]:   Rendered presentations/show.html.erb within layouts/categories (3.3ms)
+2014-08-11T00:14:32.802635+00:00 app[web.1]: Started GET "/" for 181.114.70.55 at 2014-08-11 00:14:32 +0000
+2014-08-11T00:14:33.043872+00:00 app
+[web.1]: Completed 200 OK in 240ms (Views: 165.1ms | ActiveRecord: 73.2ms)
+2014-08-11T00:14:33.043924+00:00 app[web.1]: Completed 200 OK in 240ms (Views: 165.1ms | ActiveRecord: 73.2ms)
+2014-08-11T00:14:33.058104+00:00 heroku[router]: at=info method=GET path="/" host=ferro-tools.herokuapp.com request_id=6529a3a4-1e9a-451c-9931-343912619542 fwd="181.114.70.55" dyno=web.1 connect=1ms service=272ms status=200 bytes=1214
+2014-08-11T00:14:35.447824+00:00 heroku[router]: at=info method=GET path="/assets/slide1.jpg" host=ferro-tools.herokuapp.com request_id=88303857-6698-4cea-b715-01b9045b9115 fwd="181.114.70.55" dyno=web.1 connect=1ms service=5ms status=304 bytes=1348
+2014-08-11T00:14:35.456492+00:00 heroku[router]: at=info method=GET path="/assets/slide2.jpg" host=ferro-tools.herokuapp.com request_id=2cda34d2-125c-456d-9743-fc76f2e7c6b5 fwd="181.114.70.55" dyno=web.1 connect=1ms service=4ms status=304 bytes=1348
+2014-08-11T00:14:35.472564+00:00 heroku[router]: at=info method=GET path="/assets/logo.png" host=ferro-tools.herokuapp.com request_id=21bba1dd-645c-413c-8b73-d0bc53803f39 fwd="181.114.70.55" dyno=web.1 connect=2ms service=6ms status=304 bytes=1346
+2014-08-11T00:14:35.444562+00:00 app[web.1]: Started GET "/assets/slide1.jpg" for 181.114.70.55 at 2014-08-11 00:14:35 +0000
+2014-08-11T00:14:35.444576+00:00 app[web.1]: Started GET "/assets/slide1.jpg" for 181.114.70.55 at 2014-08-11 00:14:35 +0000
+2014-08-11T00:14:35.456551+00:00 app[web.1]: Started GET "/assets/slide2.jpg" for 181.114.70.55 at 2014-08-11 00:14:35 +0000
+2014-08-11T00:14:35.456557+00:00 app[web.1]: Started GET "/assets/slide2.jpg" for 181.114.70.55 at 2014-08-11 00:14:35 +0000
+2014-08-11T00:14:35.468602+00:00 app[web.1]: Started GET "/assets/logo.png" for 181.114.70.55 at 2014-08-11 00:14:35 +0000
+2014-08-11T00:14:35.468613+00:00 app[web.1]: Started GET "/assets/logo.png" for 181.114.70.55 at 2014-08-11 00:14:35 +0000
+2014-08-11T00:19:40.381834+00:00 heroku[router]: at=info method=GET path="/orders/all_orders" host=ferro-tools.herokuapp.com request_id=e0cf8a5a-235d-4002-81c2-dd7144e4157d fwd="181.114.70.55" dyno=web.1 connect=1ms service=174ms status=200 bytes=1231
+2014-08-11T00:19:40.212828+00:00 app[web.1]: Processing by OrdersController#all_orders as HTML
+2014-08-11T00:19:40.372417+00:00 app[web.1]: Completed 200 OK in 159ms (Views: 92.9ms | ActiveRecord: 62.8ms)
+2014-08-11T00:19:40.210169+00:00 app[web.1]: Started GET "/orders/all_orders" for 181.114.70.55 at 2014-08-11 00:19:40 +0000
+2014-08-11T00:19:40.210190+00:00 app[web.1]: Started GET "/orders/all_orders" for 181.114.70.55 at 2014-08-11 00:19:40 +0000
+2014-08-11T00:19:40.372406+00:00 app[web.1]: Completed 200 OK in 159ms (Views: 92.9ms | ActiveRecord: 62.8ms)
+2014-08-11T00:19:40.212822+00:00 app[web.1]: Processing by OrdersController#all_orders as HTML
+2014-08-11T00:19:40.226503+00:00 app[web.1]:   Rendered orders/all_orders.erb within layouts/categories (7.1ms)
+2014-08-11T00:19:40.226515+00:00 app[web.1]:   Rendered orders/all_orders.erb within layouts/categories (7.1ms)
+2014-08-11T00:19:41.154219+00:00 heroku[router]: at=info method=GET path="/assets/application-d6873babe91d1580df4ef39a8bb00550.js" host=ferro-tools.herokuapp.com request_id=ea21154a-180c-43c3-8e07-7f3b993599bd fwd="181.114.70.55" dyno=web.1 connect=1ms service=5ms status=304 bytes=1334
+2014-08-11T00:19:41.171664+00:00 heroku[router]: at=info method=GET path="/assets/slide2.jpg" host=ferro-tools.herokuapp.com request_id=63066b1d-62f6-4722-9867-ecea8d980d35 fwd="181.114.70.55" dyno=web.1 connect=2ms service=5ms status=304 bytes=1365
+2014-08-11T00:19:41.188842+00:00 heroku[router]: at=info method=GET path="/assets/logo.png" host=ferro-tools.herokuapp.com request_id=401e837b-767f-466b-86d1-b79391b5296f fwd="181.114.70.55" dyno=web.1 connect=1ms service=8ms status=304 bytes=1363
+2014-08-11T00:19:41.246160+00:00 heroku[router]: at=info method=GET path="/assets/slide1.jpg" host=ferro-tools.herokuapp.com request_id=e108ec32-b1a8-430a-b5a7-169763a0afb3 fwd="181.114.70.55" dyno=web.1 connect=11ms service=14ms status=304 bytes=1367
+2014-08-11T00:19:41.171507+00:00 app[web.1]: Started GET "/assets/slide2.jpg" for 181.114.70.55 at 2014-08-11 00:19:41 +0000
+2014-08-11T00:19:41.171523+00:00 app[web.1]: Started GET "/assets/slide2.jpg" for 181.114.70.55 at 2014-08-11 00:19:41 +0000
+2014-08-11T00:19:41.184674+00:00 app[web.1]: Started GET "/assets/logo.png" for 181.114.70.55 at 2014-08-11 00:19:41 +0000
+2014-08-11T00:19:41.184666+00:00 app[web.1]: Started GET "/assets/logo.png" for 181.114.70.55 at 2014-08-11 00:19:41 +0000
+2014-08-11T00:19:41.220621+00:00 app[web.1]: Started GET "/assets/slide1.jpg" for 181.114.70.55 at 2014-08-11 00:19:41 +0000
+2014-08-11T00:19:41.220630+00:00 app[web.1]: Started GET "/assets/slide1.jpg" for 181.114.70.55 at 2014-08-11 00:19:41 +0000
