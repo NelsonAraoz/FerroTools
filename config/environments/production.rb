@@ -3,7 +3,8 @@ CatalogoVentas::Application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-
+config.serve_static_assets = true
+config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
   # and those relying on copy on write to perform better.
@@ -20,7 +21,7 @@ CatalogoVentas::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
