@@ -20,7 +20,7 @@ CatalogoVentas::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -33,7 +33,7 @@ CatalogoVentas::Application.configure do
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.1'
+  config.assets.version = '1.0'
 config.assets.compress = true
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
@@ -71,8 +71,7 @@ config.assets.compress = true
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-config.assets.precompile += %w( aplication.js bootstrap.dropdown.js bootstrap.js bootstrap.min.js jquery.colorbox.js jquery.min.js jquery.sceditpr.bbcode.min.js jquery.sceditor.default.min.js maps.js underscore.js )
-  # Disable automatic flushing of the log to improve performance.
+ # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
