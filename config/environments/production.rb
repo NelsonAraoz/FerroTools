@@ -71,7 +71,7 @@ config.assets.compress = true
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-
+config.assets.precompile += %w( aplication.js bootstrap.dropdown.js bootstrap.js bootstrap.min.js jquery.colorbox.js jquery.min.js jquery.sceditpr.bbcode.min.js jquery.sceditor.default.min.js maps.js underscore.js )
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
