@@ -7,9 +7,11 @@
   <title><%=@title%></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  
+  <%= csrf_meta_tags %>
   <meta property="og:description" content="Esta es una descripcion" />
-      
+    <meta property="og:title" content="titulo" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="http://img2.wikia.nocookie.net/__cb20140410195908/pokemon/images/4/48/025Pikachu_OS_anime.png" />
 </head>
 <body style="background-color:#f2701a;">
 <div id="myCarousel" class="carousel slide" >
