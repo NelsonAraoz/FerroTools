@@ -11,17 +11,12 @@ class ProductsController < ApplicationController
     end
   end
   def view
-    if(current_user==nil)
-      flash[:alert]="Debe ingresar al sistema"
-      redirect_to '/users/sign_in'
-    else
     @product=Product.find(params[:prodid])
     @title=@product.name
     @pictures=@product.pictures
     @selected_subcategory=Subcategory.find(params[:subid])
     @category=Category.find(params[:id])
     @order=Order.new
-  end
   end
   def destroy
     product=Product.find(params[:id])
