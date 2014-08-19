@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
       redirect_to '/users/sign_in'
     else
     @product=Product.find(params[:prodid])
+    @title=@product.name
     @pictures=@product.pictures
     @selected_subcategory=Subcategory.find(params[:subid])
     @category=Category.find(params[:id])
