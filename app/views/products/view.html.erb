@@ -9,7 +9,7 @@
 			<%end%>
 	</div>
 	<div class="col-lg-4">
-		<% if current_user.rol=="regular" %>
+		<% if current_user!=nil && current_user.rol=="regular" %>
 			<h2 align="center">Añadir al carrito</h2>
 		<%end%>
 		
