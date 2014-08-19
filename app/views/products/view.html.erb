@@ -31,9 +31,9 @@
 		</table>
 		<%= social_share_button_tag("My Site", :rel => "twipsy") %><br>
 		<a class="social-share-button-facebook" data-site="facebook" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow twipsy" title="Share to Facebook">
-		 <meta property="og:image" content="http://img3.wikia.nocookie.net/__cb20130209050249/horadeaventura/es/images/5/56/Pikachu-with-pokeball-pikachu-31615402-2560-2245.jpg" />
-		</a>
 
+		</a>
+		 <meta property="og:image" content="http://img3.wikia.nocookie.net/__cb20130209050249/horadeaventura/es/images/5/56/Pikachu-with-pokeball-pikachu-31615402-2560-2245.jpg" />
   		<%= like_button(582929041818077) %>
 		<% if current_user.rol=="admin" %>
 		<li><a href="/products/edit/<%=@product.id%>"><button type="button" class="btn btn-default">Editar producto</button></a></li>
