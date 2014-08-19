@@ -33,6 +33,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem 'social-share-button', '~> 0.1.6'
+gem "social-buttons", '~> 0.3'
 #devise para rails 4
 gem "devise", "3.0.0"
 group :doc do
