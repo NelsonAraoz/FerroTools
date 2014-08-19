@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   def view
     @product=Product.find(params[:prodid])
     @title=@product.name
+    @view_image=true
     @pictures=@product.pictures
     @selected_subcategory=Subcategory.find(params[:subid])
     @category=Category.find(params[:id])
