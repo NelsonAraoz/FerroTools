@@ -52,6 +52,8 @@ $(document).ready(function() {
 </div>
   <div id="nested">
   </div>
+  <%= social_share_button_tag("My Site", :image => "http://img2.wikia.nocookie.net/__cb20140410195908/pokemon/images/4/48/025Pikachu_OS_anime.png", :'data-type' => 'photo') %>
+  awdsed
   <%if current_user!=nil && current_user.rol=="admin"%>
 <%=link_to "Editar", "/presentations/edit"%>
   <%end%>

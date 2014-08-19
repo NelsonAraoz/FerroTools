@@ -120,6 +120,9 @@ GEM
     sequel (3.20.0)
     sinatra (1.0)
       rack (>= 1.0)
+    social-share-button (0.1.6)
+      coffee-rails
+      sass-rails
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -170,6 +173,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.2)
   sdoc
+  social-share-button (~> 0.1.6)
   sqlite3
   taps
   turbolinks
