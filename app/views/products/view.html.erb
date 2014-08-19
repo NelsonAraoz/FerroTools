@@ -34,7 +34,7 @@
 
 		</a>
 		<%= like_button(582929041818077) %>
-		<% if current_user.rol=="admin" %>
+		<% if current_user!=nil && current_user.rol=="admin" %>
 		<li><a href="/products/edit/<%=@product.id%>"><button type="button" class="btn btn-default">Editar producto</button></a></li>
 
 
