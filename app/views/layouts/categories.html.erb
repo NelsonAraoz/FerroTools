@@ -8,15 +8,20 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
- 
+   <% if @product!=nil%>
   
-
+  <meta property="og:description" content="<%=@product.name%> marca <%=@product.brand%>" />
+   
+ <meta property="og:image" content="http://img2.wikia.nocookie.net/__cb20140410195908/pokemon/images/4/48/025Pikachu_OS_anime.png" />
+ <meta property="og:title" content="<%=@product.name%>" />
+ <meta property="og:url" content="http://ferro-tools.herokuapp.com" />
+ <%else%>
    <meta property="og:description" content="Esta es una descripciondd" />
    
  <meta property="og:image" content="http://img2.wikia.nocookie.net/__cb20140207202456/es.pokemon/images/5/56/Charmander.png" />
  <meta property="og:title" content="Titulo" />
  <meta property="og:url" content="http://ferro-tools.herokuapp.com" />
-
+ <%end%>
 
 </head>
 <body style="background-color:#f2701a;">
