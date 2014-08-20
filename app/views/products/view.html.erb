@@ -29,10 +29,11 @@
 
 			</tr>
 		</table>
-		<%= social_share_button_tag("My Site", :rel => "twipsy") %>
-
-		</a>
+		<b>Comparte:</b><br>
+		<%= social_share_button_tag("FerroTools", :rel => "twipsy") %><br>
 		<%= like_button(582929041818077) %>
+		<%= google_plus_button %>
+		<%= tweet_button %>
 		<% if current_user!=nil && current_user.rol=="admin" %>
 		<li><a href="/products/edit/<%=@product.id%>"><button type="button" class="btn btn-default">Editar producto</button></a></li>
 
