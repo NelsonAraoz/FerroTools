@@ -125,9 +125,10 @@ end
    @my_orders.each do |order|
     o=Order.find(order.to_s)
     o.sended=true
+    o.delivery=params[:entrega]
     o.save
   end
-   flash[:alert]="Se realizo el cambio correctamente"
+   flash[:alert]=params[:entrega]
     redirect_to root_path
   end
 

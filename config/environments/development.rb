@@ -13,8 +13,9 @@ CatalogoVentas::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+config.action_mailer.perform_deliveries = true 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -30,10 +31,11 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 config.action_mailer.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {  
   :enable_starttls_auto => true,
-    :address => 'smtp.gmail.com',
+  :openssl_verify_mode  => 'none',
+    :address => 'smtp.ferro-tools.com',
     :port => 587,
-    :authentication => :plain,
-    :domain => 'gmail.com',
-    :user_name => 'yosistemasucb@gmail.com',
-    :password => 'tddds2013',}
+    :authentication => :login,
+    :domain => 'ferro-tools.com',
+    :user_name => 'no-reply@ferro-tools.com',
+    :password => 'cbbabolivia1',}
 end

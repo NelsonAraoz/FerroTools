@@ -37,10 +37,13 @@
 				
 					</td>
 				<td><%=order.updated_at.to_date%></td>
+
 				<td><input type="checkbox" name="llevar[]" value="<%=order.id%>"></td>
   			  		</tr>
   			  	<%end%>
   			  </table>
+  			  <b>Fecha de entrega:</b><br>
+  			   <input type="date" id="entrega" name="entrega" class='form-control input-append' data-format='dd/MM/yyyy' required=true :style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;"><br>
   			  <input type="submit" value="Entregar" class = "btn btn-primary">
   			</form>
  		    </div>

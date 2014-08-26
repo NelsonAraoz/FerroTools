@@ -1,7 +1,6 @@
 CatalogoVentas::Application.routes.draw do
 
-  resources :locations
-
+  
   devise_for :users#, controllers: {registrations: 'registrations'}
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -40,6 +39,8 @@ CatalogoVentas::Application.routes.draw do
 
   post "orders/:id" => "orders#update"
 
+  get "locations/asd/:id" => "locations#asd"
+  post "locations/login" => "locations#login"
   post "pictures/create" => "pictures#create"
   get "users/change_password" => "users#change_password"
   post "users/update_password" => "users#update_password"
@@ -49,6 +50,8 @@ CatalogoVentas::Application.routes.draw do
   get 'presentations/show' => 'presentations#show'
   # You can have the root of your site routed with "root"
    root 'presentations#show'
+   resources :locations
+
   resources :users, only: [:create,:update,:destroy] 
 resources :pictures, only: [:create]
 resources :presentations, only: [:update]

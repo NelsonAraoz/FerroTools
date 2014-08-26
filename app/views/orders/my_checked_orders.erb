@@ -12,9 +12,10 @@
 			<th>Marca</th>
 			<th>Cantidad</th>
 
-			<th>Fecha</th>
+			<th>Fecha de pedido</th>
 			
 			<th></th>
+			<th>Fecha de entrega</th>
 		</tr>
 		<% @orders. each do |order| %>
 			<tr>
@@ -31,7 +32,20 @@
 					</td>
 				<td><%=order.updated_at.to_date%></td>
 				
-				<td align="center"><%= link_to 'Cancelar', '/orders/uncheck/'+order.id.to_s, method: :post, data: { confirm: 'Desea eliminar este pedido?' }, :class => 'btn btn-mini btn-danger' %></td>
+				<td align="center">
+				<%if !order.sended?%>
+				<%= link_to 'Cancelar', '/orders/uncheck/'+order.id.to_s, method: :post, data: { confirm: 'Desea eliminar este pedido?' }, :class => 'btn btn-mini btn-danger' %>
+				 <%else%>
+				 No se puede cancelar
+				 <%end%>
+				</td>
+				<td align="center">
+					<%if !order.sended?%>
+					-
+					 <%else%>
+				 <%=order.delivery%>
+				 <%end%>
+				</td>
 			</tr>
 		<%end%>
 		</table>

@@ -1,6 +1,8 @@
 class LocationsController < ApplicationController
+    protect_from_forgery :only => [:login]
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :json, :xml
+
+  respond_to :json,:html
   # GET /locations
   # GET /locations.json
   def index
@@ -8,11 +10,14 @@ class LocationsController < ApplicationController
     respond_with @locations
   end
   def login
-    if(params[:name]=="pedro" && params[:pass]=="pedro")
-      respond_with '{"res": true}'
+    if(params[:login]=="pedro" && params[:password]=="pedro")
+      render json: '{"res": true}'
     else
-      respond_with '{"res": false}'
+      render json: '{"res": false}'
     end
+  end
+  def asd
+
   end
 
   # GET /locations/1

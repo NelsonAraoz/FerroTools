@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807161652) do
+ActiveRecord::Schema.define(version: 20140820190600) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140807161652) do
     t.integer  "checked",     default: 0, null: false
     t.integer  "location_id"
     t.integer  "sended",      default: 0, null: false
+    t.date     "delivery"
   end
 
   add_index "orders", ["product_id"], name: "index_orders_on_product_id"
