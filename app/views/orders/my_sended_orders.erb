@@ -1,54 +1,159 @@
-
-
 <div class="row">
+	
 	<div class="col-lg-12">
-	<h2 align="center" id="forms">Pedidos a enviar</h2>
+		<div class="page-header">
+		<h2 align="center" id="forms">Mis pedidos</h2>
 		
-	<%@locations.each do |location|%>
-		<%if @orders.where(:location_id=>location.id).size>0%>
-				
-  		
-		<div class="panel panel-primary">
-  			<div class="panel-heading">
-   				 <h3 class="panel-title"><a href="/locations/<%=location.id%>" data-no-turbolink = "true"><%=location.address.to_s+"# "+location.number.to_s%></a></h3>
-  			</div>
-  			<div class="panel-body">
-  			  <table class="table table-striped table-bordered">
-  			  	<tr>
-  			  		<th>Producto</th>
-					<th>Precio</th>
-					<th>Marca</th>
-					<th>Cantidad</th>
+		<div id="welcomeDiv" class="menu"  style="display:none;"> 
+		<form action="/orders/my_sended_orders" method="get">
+	
+		<div class="well">
+			<div class="row">
+				<div class="col-lg-4">
+					Estado:<br><select class="form-control" name="status" id="status" ><option value="1" name="1">Todos</option><option value="2" name="2">Pendientes</option><option value="3" name="3">Confirmados</option><option value="4" name="4">Tomadas</option><option value="5" name="5">Enviadas</option></select>
+					Direccion: <input type="text" name="address" class="form-control" value="<%=params[:address]%>">
 
-					<th>Fecha</th>
-					<th></th>
-  			  	</tr>
-  			  	<%@orders.where(:location_id=>location.id).each do |order|%>
-  			  		<tr>
-  			  			<td align="center"><%=order.product.name%></td>
-				<td align="center"><%= order.product.price%></td>
-				<td align="center"><%=order.product.brand%></td>
-				<td align="center">
+				</div>
+				<div class="col-lg-4">
+					Cliente: <input type="text" name="client" class="form-control" value="<%=params[:client]%>">
+					Mensajero: <input type="text" name="messenger" class="form-control" value="<%=params[:messenger]%>">
+				</div>
+				<div class="col-lg-4" id="fechas">
+					Fecha de pedido: <input type="date" id="entrega" name="from" class='form-control input-append' data-format='dd/MM/yyyy' style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;" value="<%=params[:from]%>">
+					 Fecha de envio: <input type="date" id="date_to" name="date_to" class='form-control input-append' data-format='dd/MM/yyyy' style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;" value="<%=params[:date_to]%>">
 					
-				
-						<%=order.amount%>
-				
-					
-				
-					</td>
-				<td><%=order.updated_at.to_date%></td>
-				<td align="center"><%= link_to 'Cancelar', '/orders/uncheck_send/'+order.id.to_s, method: :post, data: { confirm: 'Desea eliminar este pedido?' }, :class => 'btn btn-mini btn-danger' %></td>
-  			  		</tr>
-  			  	<%end%>
-  			  </table>
-  			 
- 		    </div>
+
+				</div>
+			</div>
+		<input type="submit" value="Buscar">
 		</div>
-		
+		</form>
+		</div>
+		<div id="showmenu"><img src="/assets/search.png"></div>	
+		</div>
+	<% @deliveries. each do |deliver| %>
+			<div style="border-style: dashed;border-width: 1px; background-color:#ffffff;" class="row">
+				<br>
+					<div class="col-lg-3">
+						<div class="well">
+						<b>Pedido:</b><br>
+						<%=deliver.created_at.to_date%><br>
+						<b>Actualizado:</b><br>
+						<%=deliver.updated_at.to_date%><br>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="well">
+							<a data-toggle="modal" href="#myModal" 
+							OnClick="try{set_status(<%=deliver.id%>,'<%=deliver.status%>');}catch(ex){alert(ex.message);}"><img src="/assets/<%=deliver.status%>.png" heigth="30" width="30"><font size="3" color="<%=@colors[deliver.status]%>"><b> <%=@status[deliver.status]%></b></font></a><br>
+							
+							<img src="/assets/location.png" alt="Direccion" heigth="20" width="20"> <b> <%=deliver.deliver.location.address.to_s+'# '+deliver.deliver.location.number.to_s%></b> <br>
+							<img src="/assets/money.png" heigth="20" width="20"><b> <%=(deliver.total)%> Bs.</b><br>
+							<img src="/assets/client.png" heigth="20" width="20"><b> <%=deliver.deliver.user.name+' '+deliver.deliver.user.lastname %></b><br>
+								<img src="/assets/messenger.png" heigth="20" width="20"><b> 
+								<%if !deliver.messenger.nil?%>
+								<%=deliver.messenger.name+' '+deliver.messenger.lastname %>
+								<%else%>
+								-
+								<%end%>
+							</b><br>
+								<img src="/assets/calendar.png" heigth="20" width="20"><b> <%=deliver.delivery %></b><br>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="well">
+							<%if( deliver.status!='taked' && deliver.status!='sended')%>
+						<a href="/shippings/edit_data/<%=deliver.id%>"><img src="/assets/editmessenger.png" heigth="30" width="30"></a>|
+						<%end%>
+						
+						<a href="/shippings/show/<%=deliver.id%>"><img src="/assets/detail.png" heigth="40" width="40"></a>
+<%if( deliver.status!='taked' && deliver.status!='sended')%>
+						|
+						<%=link_to image_tag("cruz.png",:size=>"30x30"),'/shippings/destroy/'+deliver.id.to_s,:method=>"post",:confirm=>"Seguro?"%>
+						<%end%>
+						</div>
+					</div>
+			</div>
 		<%end%>
-	<%end%>
+		
+		
 	</div>
+	<%= paginate @deliveries %>
 </div>
 
 
 
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Actualizar pedido</h4>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-5">
+<form accept-charset="UTF-8" action="" id="edit_status" method="post">
+<select class="form-control" name="my_status" id="my_status" ><option value="pending" name="1">Pendiente</option><option value="confirmed" name="2">Confirmada</option><option value="taked" name="3">Tomada</option><option value="sended" name="4">Enviada</option></select>
+	<input type="submit" value="actualizar" class = "btn btn-primary">
+</form>
+</div>
+</div>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+
+<script>
+
+<%if @exist%>
+$('.menu').toggle("slide");
+<%end%>
+<% if (!params['date_to'].blank?) %>
+$('.date_range').toggle("slide");
+<%end%>
+$(document).ready(function() {
+	 
+    $('#showmenu').click(function() {
+         $('.menu').toggle("slide");
+    });
+    $('#showdate').click(function() {
+         $('.date_range').toggle("slide");
+    });
+});
+
+<%if !params[:status].blank?%>
+	var sts=document.getElementById('status');
+sts.selectedIndex=<%=params[:status].to_i-1%>
+<%end%>
+function set_status(id,status)
+{
+	
+document.getElementById('edit_status').action="/shippings/edit_status/"+id;
+var index;
+if(status=="pending")
+{
+	index=0;
+}
+else{
+if(status=="confirmed")
+{
+	index=1;
+}
+else
+{
+	if(status=="taked")
+		{
+			index=2;
+		}
+		else{
+			index=3;
+		}
+}
+}
+document.getElementById('my_status').selectedIndex=index;
+
+}
+</script>

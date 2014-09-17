@@ -1,0 +1,35 @@
+<h2>Resultados</h2>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+    
+        <th>Imagen </th>
+         <th>Nombre  </th>
+        <th>Precio </th>
+        <th>Stock</th>
+      
+     
+    </tr>
+  </thead>
+  <tbody>
+   <% @products.each do |product| %>
+    <tr style='cursor:pointer' onclick="document.location.href='/categories/<%=product.subcategory.category.id.to_s%>/<%=product.subcategory.id.to_s%>/<%=product.id.to_s%>'">
+          <td> <%if(product.pictures.size>0)%>
+            <img src="<%=product.pictures.first.picture.url%>" heigth="100" width="100"/>
+          <%end%></td>
+
+          <td>
+          <FONT FACE="raro, courier" SIZE=5 COLOR="gray"> <%=product.name%><br> </FONT>
+          <SUB>codigo: <%=product.code %></SUB>
+        </td>
+        <%if(!current_user.nil?)%>
+        <td><%=  product.price %></td>
+        <%else%>
+         <td> Ingrese al sistema </td>
+        <%end%>
+        <td><%=product.stock%></td>
+      </tr>
+      <%end%>
+  </tbody>
+</table>
+<%= paginate @products%>

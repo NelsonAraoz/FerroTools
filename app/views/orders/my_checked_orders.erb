@@ -3,53 +3,112 @@
 	<div class="col-lg-12">
 		<div class="page-header">
 		<h2 align="center" id="forms">Mis pedidos</h2>
-		</div>
-	
-		<table class="table table-striped table-bordered">
-		<tr>	
-			<th>Producto</th>
-			<th>Precio</th>
-			<th>Marca</th>
-			<th>Cantidad</th>
 
-			<th>Fecha de pedido</th>
-			
-			<th></th>
-			<th>Fecha de entrega</th>
-		</tr>
-		<% @orders. each do |order| %>
-			<tr>
-				<td align="center"><%=order.product.name%></td>
-				<td align="center"><%= order.product.price%></td>
-				<td align="center"><%=order.product.brand%></td>
-				<td align="center">
+		<div id="welcomeDiv" class="menu"  style="display:none;"> 
+		<form action="/orders/my_checked_orders" method="get">
+	
+		<div class="well">
+			<div class="row">
+				<div class="col-lg-4">
+					Estado:<br><select class="form-control" name="status" id="status" ><option value="1" name="1">Todos</option><option value="2" name="2">Confirmados</option><option value="3" name="3">Tomadas</option><option value="4" name="4">Enviadas</option></select>
 					
-				
-						<%=order.amount%>
-				
+
+				</div>
+				<div class="col-lg-4">
 					
-				
-					</td>
-				<td><%=order.updated_at.to_date%></td>
-				
-				<td align="center">
-				<%if !order.sended?%>
-				<%= link_to 'Cancelar', '/orders/uncheck/'+order.id.to_s, method: :post, data: { confirm: 'Desea eliminar este pedido?' }, :class => 'btn btn-mini btn-danger' %>
-				 <%else%>
-				 No se puede cancelar
-				 <%end%>
-				</td>
-				<td align="center">
-					<%if !order.sended?%>
-					-
-					 <%else%>
-				 <%=order.delivery%>
-				 <%end%>
-				</td>
-			</tr>
+					Mensajero: <input type="text" name="messenger" class="form-control" value="<%=params[:messenger]%>">
+					Direccion: <input type="text" name="address" class="form-control" value="<%=params[:address]%>">
+				</div>
+				<div class="col-lg-4" id="fechas">
+					Fecha de pedido: <input type="date" id="entrega" name="from" class='form-control input-append' data-format='dd/MM/yyyy' style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;" value="<%=params[:from]%>">
+					 Fecha de envio: <input type="date" id="date_to" name="date_to" class='form-control input-append' data-format='dd/MM/yyyy' style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;" value="<%=params[:date_to]%>">
+					
+
+				</div>
+			</div>
+		<input type="submit" value="Buscar">
+		</div>
+		</form>
+		</div>
+		<div id="showmenu"><img src="/assets/search.png"></div>	
+
+		</div>
+		<%= paginate @my_shippings%>
+		<%if(@my_shippings.size==0)%>
+		<h3>No se encontraron envios!</h3>
 		<%end%>
-		</table>
+	<% @my_shippings. each do |shipping| %>
+			<div style="border-style: dashed;border-width: 1px; background-color:#ffffff;" class="row">
+				<br>
+					<div class="col-lg-3">
+						<div class="well">
+						<b>Pedido:</b><br>
+						<%=shipping.created_at.to_date%><br>
+						<b>Actualizado:</b><br>
+						<%=shipping.updated_at.to_date%><br>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="well">
+							<img width="20" heigth="20" src="/assets/<%=shipping.status%>.png"><font size="3" color="<%=@colors[shipping.status]%>"><b> <%=@status[shipping.status]%></b></font><br>
+							
+							<img src="/assets/location.png" alt="Direccion" heigth="20" width="20"> <b> <%=shipping.deliver.location.address.to_s+'# '+shipping.deliver.location.number.to_s%></b> <br>
+							<img src="/assets/money.png" heigth="20" width="20"><b> <%=(shipping.total)%> Bs.</b><br>
+								
+								<img src="/assets/messenger.png" heigth="20" width="20"><b> 
+								<%if shipping.messenger.nil?%>
+								-
+								<%else%>
+								<%=shipping.messenger.name+' '+shipping.messenger.lastname %>
+							<%end%>
+							</b><br>
+								<img src="/assets/calendar.png" heigth="20" width="20"><b> 
+									<%if shipping.delivery.blank?%>
+								-
+								<%else%>
+								<%=shipping.delivery %>
+								<%end%>
+								</b><br>
+								
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="well">
+							<a href="/shippings/show/<%=shipping.id%>"><img src="/assets/detail.png" heigth="40" width="40"></a>|
+						<%if shipping.status!='sended'%>
+						<a href="/orders/delete_items/<%=shipping.deliver.id%>"><img src="/assets/cruz.png" heigth="40" width="40"></a>
+						<br>
+						<%end%>
+
+						</div>
+					</div>
+			</div>
+		<%end%>
 		
 		
 	</div>
 </div>
+
+<script>
+
+<%if @exist%>
+$('.menu').toggle("slide");
+<%end%>
+<% if (!params['date_to'].blank?) %>
+$('.date_range').toggle("slide");
+<%end%>
+$(document).ready(function() {
+	 
+    $('#showmenu').click(function() {
+         $('.menu').toggle("slide");
+    });
+    $('#showdate').click(function() {
+         $('.date_range').toggle("slide");
+    });
+});
+
+<%if !params[:status].blank?%>
+	var sts=document.getElementById('status');
+sts.selectedIndex=<%=params[:status].to_i-1%>
+<%end%>
+</script>

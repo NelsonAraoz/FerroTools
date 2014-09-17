@@ -1,0 +1,6 @@
+ 			<form action="/shippings/update_data/<%=@shipping.id%>" method="post">
+ 			<b>Fecha de entrega:</b><br>
+           <input type="date" id="entrega" name="entrega" class='form-control input-append' data-format='dd/MM/yyyy' required=true :style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;" value="<%=@shipping.delivery%>"><br><b>Mensajero:</b> 
+            <%=select_tag :messenger,options_from_collection_for_select(User.where(:rol=>'messenger'), "id", "email"),:value=>@shipping.messenger_id%><br><br>
+            <input type="submit" value="actualizar">
+        </form>

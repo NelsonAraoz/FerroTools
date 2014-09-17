@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-lg-12">
+  
+  
+      
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+           <h3 class="panel-title"><a href="/locations/<%=@location.id%>" data-no-turbolink = "true"><%=@location.address.to_s+"# "+@location.number.to_s%></a></h3>
+        </div>
+        <div class="panel-body">
+          <div class="well">
+            <h4>Datos personales</h4>
+          <b>Nombre: </b> <%=@location.user.name%><br>
+          <b>Apellido: </b> <%=@location.user.lastname%><br>
+          <b>Telefono: </b> <%=@location.user.phone%><br>
+          </div>
+          <form action="/shippings/confirm_shipping_send/<%=@deliver.id%>" method="post">
+          <table class="table table-striped table-bordered">
+            <tr>
+              <th>Producto</th>
+          <th>Precio</th>
+          <th>Marca</th>
+          <th>Cantidad</th>
+
+          <th>Fecha</th>
+          <th></th>
+            </tr>
+            <%@orders.each_with_index do |order,index|%>
+            <%if order.packages.sum(:amount)<order.amount%>
+              <tr>
+                <td align="center"><%=order.product.name%></td>
+                <td align="center"><%= order.product.price%></td>
+                <td align="center"><%=order.product.brand%></td>
+                <td align="center">
+          
+        <input type="text"  id="text<%=index%>" name="cantidad[]" size="1" value="<%=order.amount-order.packages.sum(:amount)%>" >/<%=order.amount-order.packages.sum(:amount)%>
+        </td>
+            
+          
+        
+          </td>
+        <td><%=order.updated_at.to_date%></td>
+
+        <td><input type="checkbox" name="llevar[]" value="<%=order.id%>" onClick="enable_text(text<%=index%>,this.checked);" checked></td>
+              </tr>
+            <%end%>
+            <%end%>
+          </table>
+          <b>Fecha de entrega:</b><br>
+           <input type="date" id="entrega" name="shipping[delivery]" class='form-control input-append' data-format='dd/MM/yyyy' required=true :style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;"><br><b>Mensajero:</b> 
+            <%=select_tag 'shipping[messenger_id]',options_from_collection_for_select(User.where(:rol=>'messenger'), "id", "email")%><br><br>
+  
+          <input type="submit" value="Entregar" class = "btn btn-primary" onClick="probar();">
+        </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+<script>
+function probar()
+{
+  <%@orders.each_with_index do |order,index|%>
+   <%if order.packages.sum(:amount)<order.amount%>
+    var valores=document.getElementById('text<%=index%>');
+  
+    var a='<%=order.amount-order.packages.sum(:amount)%>'
+    if(valores.value>a)
+      alert(<%=index%>);
+
+
+  <%end%>
+  <%end%>
+return false;
+}
+function enable_text(index,value)
+{
+  try{
+  index.disabled=!value;
+  }
+  catch(ex)
+  {
+    alert(ex.message);
+  }
+}
+</script>

@@ -1,0 +1,28 @@
+	<table border="1">
+  			  	<tr>
+  			  		<th>Producto</th>
+					<th>Precio</th>
+					<th>Marca</th>
+					<th>Cantidad</th>
+					<th>Fecha</th>
+          <th>Recibidos</th>
+           <th>Saldo</th>
+		
+				  	</tr>
+            
+  			  	<%@orders.each do |order|%>
+  			  		<tr >
+  			  	  		<td align="center"><%=order.product.name%></td>
+				          <td align="center"><%= order.product.price%></td>
+				          <td align="center"><%=order.product.brand%></td>
+				         <td align="center">
+						      <%=order.amount%>
+					       </td>
+				        <td><%=order.updated_at.to_date%></td>
+                <td><%=order.shippings.sum(:amount)%>/<%=order.amount%></td>
+				<td><%=order.amount-order.shippings.sum(:amount)%></td>
+				
+				  		</tr>
+  			  	<%end%>
+  			  </table>
+          

@@ -5,19 +5,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :orders
+  has_many :delivers
   has_many :locations
   validates :name,
-	:presence  => { :message => " es requerido, no puede ser nulo" },
-	:length => {
-		:minimum => 2,
-		:allow_blank => TRUE
-	}
+	:presence  => { :message => " es requerido, no puede ser nulo" }
 	validates :lastname,
-	:presence  => { :message => " es requerido, no puede ser nulo" },
+	:presence  => { :message => " es requerido, no puede ser nulo" }
+	validates :email,
+		:presence  => { :message => " es requerido, no puede ser nulo" }
+
+	validates :phone,
 	:length => {
-		:minimum => 2,
-		:allow_blank => TRUE
+		:minimum => 7,
+		:maximun=>8,
+		 :message => " debe tener como minimo 7 y como maximo 8 caracteres"
 	}
+	
 	
 	 
 end

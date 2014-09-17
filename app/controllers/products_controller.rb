@@ -10,6 +10,10 @@ class ProductsController < ApplicationController
       redirect_to root_path
     end
   end
+  def search
+    @filtered_products=filter_products(Product.all,params[:product])
+    @products=Kaminari.paginate_array(@filtered_products).page(params[:page]).per(10)
+  end
   def view
     @product=Product.find(params[:prodid])
     @title=@product.name
@@ -66,6 +70,17 @@ class ProductsController < ApplicationController
     end
     flash[:alert]="Producto creado exitosamente"
     redirect_to "/categories/"+@product.subcategory.category_id.to_s+"/"+@product.subcategory_id.to_s
+  end
+  private
+  def filter_products(products,param)
+    @filtered=[]
+    products.each do |product|
+      if(product.filter(param))
+        @filtered.push(product)
+      end
+
+    end
+    @filtered
   end
 
 end

@@ -1,0 +1,112 @@
+<form action="/orders/remove_user_request" method="get">
+<input type="text" name="id" value="<%=params[:id]%>"><input type="submit" value="Buscar">
+</form>
+<table class="table table-striped table-bordered">
+  			  	<tr>
+  			  		<th>Producto</th>
+					<th>Precio</th>
+					<th>Marca</th>
+					<th>Cantidad total</th>
+					<th>Cantidad no asignada</th>
+
+					<th>Fecha</th>
+					<th></th>
+					<th></th>
+  			  	</tr>
+  			  	<%@orders.each do |order|%>
+  			  		<tr>
+  			  			<td align="center"><%=order.product.name%></td>
+				<td align="center"><%= order.product.price%></td>
+				<td align="center"><%=order.product.brand%></td>
+				<td align="center"><%=order.amount%></td>
+				
+				<td align="center">
+					
+				
+						<%=order.amount-order.packages.sum(:amount)%>
+				
+					
+				
+					</td>
+				<td><%=order.updated_at.to_date%></td>
+				<td align="center"> <a data-toggle="modal" href="#myModal" class = 'btn btn-mini btn-danger'>Quitar</a>  </td>
+				<td align="center"> <a data-toggle="modal" href="#modalAdd" class = 'btn btn-mini btn-danger'>Agregar</a>  </td>
+  			  		</tr>
+  			  	<%end%>
+  			  </table>
+  			 <%if @shippings.size>0%>
+  			 <h3>Pedidos relacionados</h3>
+  			 	<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Fecha de envio</th>
+      <th>Mensajero designado</th>
+      <th>Estado</th>
+      <th>Programada</th>
+      <th>En pedido</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shippings.each do |shipping| %>
+      <tr>
+        <td><%if !shipping.delivery.blank?%><%= shipping.delivery %><%else%>-<%end%></td>
+        <td><%if !shipping.messenger.nil?%><%= shipping.messenger.name %><%else%>-<%end%></td>
+        <td><%= shipping.status %></td>
+        <td><%= shipping.created_at %></td>
+        <td><%=shipping.packages.where(:order_id=>@order.id).sum(:amount)%></td>
+        <td><a href="/shippings/show/<%=shipping.id%>" target="_blank">Ver</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  			<%end%>
+
+
+<%if !@order.nil?%>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Quitar</h4>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-10">
+<form accept-charset="UTF-8" action="/orders/remove_order/<%=@order.id%>" id="edit_status" method="post">
+	<input type="number" name="amount" > <b> de <%=@order.amount-@order.packages.sum(:amount)%> eliminables</b>
+	<input type="submit" value="actualizar" class = "btn btn-primary">
+</form>
+</div>
+</div>
+      </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal" id="modalAdd">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Agregar</h4>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-10">
+<form accept-charset="UTF-8" action="/orders/add_order/<%=@order.id%>" id="add" method="post">
+	<input type="number" name="amount" > <b> de <%=@order.product.stock%> en stock</b>
+	<input type="submit" value="actualizar" class = "btn btn-primary">
+</form>
+</div>
+</div>
+      </div>
+      </div>
+  </div>
+</div>
+
+<%end%>

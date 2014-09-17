@@ -1,0 +1,28 @@
+<h1>Envios</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Fecha de envio</th>
+      <th>Mensajero designado</th>
+      <th>Estado</th>
+      <th></th>
+      <th></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shippings.each do |shipping| %>
+      <tr>
+        <td><%= shipping.delivery %></td>
+        <td><%= shipping.messenger.name+' 'shipping.messenger.lastname %></td>
+        <td><%= shipping.status %></td>
+        <td><%= shipping.created_at %></td>
+        <td><a href="/orders/all_orders/<%=shipping.deliver.id%>">Ver pedido</a></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

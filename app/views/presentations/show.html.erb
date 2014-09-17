@@ -46,12 +46,12 @@ $(document).ready(function() {
 
 
 
-<p id="notice"><%= notice %></p>
 <div style="display:none;">
 <textarea></textarea>
 </div>
-  <div id="nested">
-  </div>
+
   <%if current_user!=nil && current_user.rol=="admin"%>
 <%=link_to "Editar", "/presentations/edit"%>
   <%end%>
+  <div id="nested">
+  </div>

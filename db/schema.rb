@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820190600) do
+ActiveRecord::Schema.define(version: 20140912194922) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "delivers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delivers", ["location_id"], name: "index_delivers_on_location_id"
+  add_index "delivers", ["user_id"], name: "index_delivers_on_user_id"
 
   create_table "index", force: true do |t|
     t.string   "content"
@@ -38,18 +48,23 @@ ActiveRecord::Schema.define(version: 20140820190600) do
 
   create_table "orders", force: true do |t|
     t.integer  "amount"
-    t.integer  "user_id"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "checked",     default: 0, null: false
-    t.integer  "location_id"
-    t.integer  "sended",      default: 0, null: false
-    t.date     "delivery"
+    t.integer  "deliver_id"
+    t.integer  "user_id"
   end
 
-  add_index "orders", ["product_id"], name: "index_orders_on_product_id"
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  create_table "packages", force: true do |t|
+    t.integer  "shipping_id"
+    t.integer  "order_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "packages", ["order_id"], name: "index_packages_on_order_id"
+  add_index "packages", ["shipping_id"], name: "index_packages_on_shipping_id"
 
   create_table "pictures", force: true do |t|
     t.integer  "product_id"
@@ -81,6 +96,22 @@ ActiveRecord::Schema.define(version: 20140820190600) do
   end
 
   add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id"
+
+  create_table "shippings", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "deliver_id"
+    t.string   "status",       default: "pending"
+    t.integer  "messenger_id"
+    t.date     "delivery"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shippings", ["deliver_id"], name: "index_shippings_on_deliver_id"
+  add_index "shippings", ["order_id"], name: "index_shippings_on_order_id"
+
+# Could not dump table "sqlite_stat1" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "subcategories", force: true do |t|
     t.string   "name"

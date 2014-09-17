@@ -2,10 +2,11 @@
 <html>
 <head>
 
-  <title>CatalogoVentas</title>
+  <title>FerroTools</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/assets/logo.png" />
    <% if @product.nil?%>
   
 <meta property="og:description" content="dsfsdf" />
@@ -64,16 +65,31 @@
        <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mis pedidos<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/orders/my_orders">Carrito</a></li>
-          <li><a href="/orders/my_checked_orders">Pedidos realizados</a></li>
-        
+          <li><a href="/orders/my_orders"><i><img src="/assets/cart.png"></i>Carrito</a></li>
+         <li><a href="/orders/all_orders"><i><img src="/assets/ok.png" width="20" height="20"></i>Pedidos realizados</a></li>
+          <li><a href="/orders/my_checked_orders"><i><img src="/assets/messenger.png" width="20" height="20"></i>Envios confirmados</a></li>
+          
         </ul>
       </li>
       <li class="active"><a href="/locations">Mis direcciones</a></li>
+      <%elsif current_user!=nil && current_user.rol=="admin"%>
+     
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+              <li><a href="/orders/all_orders">Pedidos recibidos</a></li>
+               <li><a href="/orders/my_sended_orders">Pedidos comfirmados</a></li>
+          <li><a href="/orders/remove_user_request">Eliminar item</a></li>
+        
+        </ul>
+      </li>
+      
+      <li class="active"><a href="/users/messenger_index">Mensajeros</a></li>
+      
       <%end%>
     <li>
-    <form class="navbar-form navbar-right">
-      <input type="text" class="form-control col-lg-10" placeholder="Buscar">
+    <form class="navbar-form navbar-right" action="/products/search" method="get">
+      <input type="text" class="form-control col-lg-10" placeholder="Buscar" name="product" value="<%=params[:product]%>">
     </form>
   </li>
     </ul>
@@ -83,6 +99,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=current_user.name+" "+current_user.lastname%><b class="caret"></b></a>
         <ul class="dropdown-menu">
               <li><a href="/users/edit">Editar datos</a></li>
+               <li><a href="/users/change_password">Cambiar password</a></li>
           <li  ><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
         
         </ul>
@@ -99,9 +116,9 @@
 
 
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-4">
   </div>
-    <div  class="col-lg-9">
+    <div  class="col-lg-7">
       <% flash.each do |name, msg| %>
         <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
@@ -109,6 +126,9 @@
         </div>
       <% end %>
     </div>
+    <div class="col-lg-1">
+  </div>
+  
   </div>
 <div class='row'>
   <div class="col-lg-1">

@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-lg-12">
+  
+  
+      
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          <%if current_user!=nil && current_user.rol=="admin"%>
+    
+          <div align="right"><%=link_to image_tag("cruz.png",:size=>"30x30"),'/shippings/destroy/'+@shipping.id.to_s,:method=>"post",:confirm=>"Seguro?"%>
+</div>
+<%end%>
+           <h3 class="panel-title"><a href="/locations/<%=@location.id%>" data-no-turbolink = "true"><%=@location.address.to_s+"# "+@location.number.to_s%></a> </h3>
+        </div>
+        <div class="panel-body">
+          <div class="well">
+            <h4>Datos personales</h4>
+          <b>Nombre: </b> <%=@location.user.name%><br>
+          <b>Apellido: </b> <%=@location.user.lastname%><br>
+          <b>Telefono: </b> <%=@location.user.phone%><br>
+          </div>
+          <table class="table table-striped table-bordered">
+            <tr>
+              <th>Producto</th>
+          <th>Precio</th>
+          <th>Marca</th>
+          <th>Cantidad</th>
+          <th>Fecha</th>
+            </tr>
+            <%@packages.each do |package|%>
+              <tr>
+                <td align="center"><%=package.order.product.name%></td>
+        <td align="center"><%= package.order.product.price%></td>
+        <td align="center"><%=package.order.product.brand%></td>
+        <td align="center">
+          
+        
+            <%=package.amount%>/<%=package.order.amount%>
+        
+          
+        
+          </td>
+        <td><%=package.updated_at.to_date%></td>
+
+              </tr>
+            <%end%>
+          </table>
+        
+        </div>
+         <%if current_user!=nil && current_user.rol=="admin"%>
+    <a href="/shippings/edit/<%=@shipping.id%>">Editar</a>|
+   
+    <%if(@shipping.status=='pending')%>
+    <%=link_to "Confirmar","/shippings/confirm/"+@shipping.id.to_s,:method=>"post"%>|
+<%end%>
+    <%=link_to "Mensajero","/shippings/edit_data/"+@shipping.id.to_s%>|
+<%end%>
+ <a href="/delivers/show/<%=@shipping.deliver.id%>">Ver Orden completa</a>
+    </div>
+   
+            
+  </div>
+</div>

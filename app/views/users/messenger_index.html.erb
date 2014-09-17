@@ -1,0 +1,32 @@
+<h1>Mis mensajeros</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre de usuario</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Telefono</th>
+    
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messengers.each do |messenger| %>
+      <tr>
+        <td><%= messenger.email %></td>
+        <td><%= messenger.name %></td>
+        <td><%= messenger.lastname %></td>
+        <td><%= messenger.phone%></td>
+        
+        <td>
+          <%= link_to 'Editar', '/users/edit_messenger/'+messenger.id.to_s%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Nuevo mensajero', new_messenger_path,'data-no-turbolink' => true %>

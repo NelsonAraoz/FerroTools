@@ -21,3 +21,16 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    models: 
+      user: "usuario"
+    attributes:
+      user:
+        email: "correo"
+        name: "nombre"
+        lastname: "apellido"
+        phone: "telefono"
+        password_confirmation: "pass"
+        errors:
+            confirmation: "adsdsa does not match"

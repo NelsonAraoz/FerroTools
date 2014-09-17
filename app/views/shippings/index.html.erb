@@ -1,0 +1,29 @@
+<h3>Planificar envios</h3>
+<b>Cree nuevos envios o edite uno existente para poder cumplir con el pedido del cliente</b><br>
+
+<%= link_to image_tag("add.png",:size=>"50x50"), '/shippings/create/'+@deliver.id.to_s, :method=>'post',:confirm=>"Seguro?" %><br>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Fecha de envio</th>
+      <th>Mensajero designado</th>
+      <th>Estado</th>
+      <th>Programada</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shippings.each do |shipping| %>
+      <tr>
+        <td><%if !shipping.delivery.blank?%><%= shipping.delivery %><%else%>-<%end%></td>
+        <td><%if !shipping.messenger.nil?%><%= shipping.messenger.name %><%else%>-<%end%></td>
+        <td><%=@status[shipping.status] %></td>
+        <td><%= shipping.created_at %></td>
+        <td><a href="/shippings/show/<%=shipping.id%>">Ver</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

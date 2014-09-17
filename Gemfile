@@ -29,7 +29,7 @@ gem 'paperclip-dropbox'
 gem 'colorbox-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
+gem 'kaminari'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem 'social-share-button', '~> 0.1.6'

@@ -6,8 +6,17 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = current_user.locations
-    respond_with @locations
+    if((current_user!=nil && current_user.rol!="messenger"))
+    if (current_user!=nil && current_user.rol=="admin")
+      @user=User.find(params[:id])
+    elsif(current_user!=nil && current_user.rol=="regular")
+      @user=current_user
+    end
+    @locations = @user.locations
+    
+  else
+    redirect_to root_path
+  end
   end
   def login
     if(params[:login]=="pedro" && params[:password]=="pedro")
@@ -17,8 +26,9 @@ class LocationsController < ApplicationController
     end
   end
   def asd
-
+    render json: Location.all
   end
+
 
   # GET /locations/1
   # GET /locations/1.json

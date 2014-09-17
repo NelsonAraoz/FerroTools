@@ -1,0 +1,27 @@
+<div style="border-style: dashed;border-width: 1px; background-color:#ffffff;" class="row">
+				<br>
+					<div class="col-lg-3">
+						<div class="well">
+						<b>Pedido:</b><br>
+						<%=@deliver.created_at.to_date%><br>
+						<b>Actualizado:</b><br>
+						<%=@deliver.updated_at.to_date%><br>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="well">
+							<font size="3" color="red"><b>Ubicacion: </b></font><%=@deliver.location.address.to_s+'# '+@deliver.location.number.to_s%> <br>
+							<font size="3" color="red"><b>Cantidad: </b></font><%=@deliver.orders.size%> productos<br>
+							<font size="3" color="red"><b>Cantidad Total: </b></font><%=@deliver.orders.sum(:amount)%> unidades<br>
+							<font size="3" color="red"><b>Monto Total </b></font><%=@deliver.total%> Bs.<br>
+							<font size="3" color="red"><b>Enviados:</b></font><%=@deliver.orders.where.not(:shipping_id=>nil).size%>/<%=@deliver.orders.size%>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="well">
+						<a href="/shippings/index/<%=deliver.id%>"><button type="button" class="btn btn-primary">Ver envios</button></a><br><br>
+
+						<a href="/delivers/show/<%=deliver.id%>"><button type="button" class="btn btn-danger">Ver pedido</button></a><br>
+						</div>
+					</div>
+			</div>

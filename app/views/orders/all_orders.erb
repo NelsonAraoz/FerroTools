@@ -1,55 +1,109 @@
-
-
 <div class="row">
-	<div class="col-lg-12">
 	
-	<%@locations.each do |location|%>
-		<%if @orders.where(:location_id=>location.id).size>0%>
-				
-  		
-		<div class="panel panel-primary">
-  			<div class="panel-heading">
-   				 <h3 class="panel-title"><a href="/locations/<%=location.id%>" data-no-turbolink = "true"><%=location.address.to_s+"# "+location.number.to_s%></a></h3>
-  			</div>
-  			<div class="panel-body">
-  				<form action="/orders/confirm_order_send" method="post">
-  			  <table class="table table-striped table-bordered">
-  			  	<tr>
-  			  		<th>Producto</th>
-					<th>Precio</th>
-					<th>Marca</th>
-					<th>Cantidad</th>
-
-					<th>Fecha</th>
-					<th></th>
-  			  	</tr>
-  			  	<%@orders.where(:location_id=>location.id).each do |order|%>
-  			  		<tr>
-  			  			<td align="center"><%=order.product.name%></td>
-				<td align="center"><%= order.product.price%></td>
-				<td align="center"><%=order.product.brand%></td>
-				<td align="center">
-					
-				
-						<%=order.amount%>
-				
-					
-				
-					</td>
-				<td><%=order.updated_at.to_date%></td>
-
-				<td><input type="checkbox" name="llevar[]" value="<%=order.id%>"></td>
-  			  		</tr>
-  			  	<%end%>
-  			  </table>
-  			  <b>Fecha de entrega:</b><br>
-  			   <input type="date" id="entrega" name="entrega" class='form-control input-append' data-format='dd/MM/yyyy' required=true :style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;"><br>
-  			  <input type="submit" value="Entregar" class = "btn btn-primary">
-  			</form>
- 		    </div>
-		</div>
+	<div class="col-lg-12">
+		<div class="page-header">
+		<h2 align="center" id="forms">Mis pedidos</h2>
 		
+		<div id="welcomeDiv" class="menu"  style="display:none;"> 
+		<form action="/orders/all_orders" method="get">
+	
+		<div class="well">
+			<div class="row">
+				<div class="col-lg-4">
+					Estado:<br><select class="form-control" name="status" id="status" ><option value="1" name="1">Todos</option><option value="2" name="2" selected>Incompletos</option><option value="3" name="3">Completos</option></select>
+					
+				</div>
+				<div class="col-lg-4">
+					<%if current_user!=nil && current_user.rol=="admin"%>
+							
+					Cliente: <input type="text" name="client" class="form-control" value="<%=params[:client]%>">
+					<%end%>
+
+					Direccion: <input type="text" name="address" class="form-control" value="<%=params[:address]%>">
+				</div>
+				<div class="col-lg-4" id="fechas">
+					Fecha de pedido: <input type="date" id="entrega" name="from" class='form-control input-append' data-format='dd/MM/yyyy' style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;" value="<%=params[:from]%>">
+					
+
+				</div>
+			</div>
+		<input type="submit" value="Buscar">
+		</div>
+		</form>
+		</div>
+		<div id="showmenu"><img src="/assets/search.png"></div>	
+		</div>
+		<%= paginate @deliveries %>
+		<%if @deliveries.size==0%>
+		<h3>No se encontraron resultados</h3>
 		<%end%>
-	<%end%>
+	<% @deliveries. each do |deliver| %>
+			<div style="border-style: dashed;border-width: 1px; background-color:#ffffff;" class="row">
+				<br>
+					<div class="col-lg-3">
+						<div class="well">
+						<b>Pedido:</b><br>
+						<%=deliver.created_at.to_date%><br>
+						<b>Actualizado:</b><br>
+						<%=deliver.updated_at.to_date%><br>
+						</div>
+					</div>
+					<div class="col-lg-5">
+						<div class="well">
+							<img src="/assets/location.png" alt="Direccion" heigth="20" width="20"> <b> <%=deliver.location.address.to_s+'# '+deliver.location.number.to_s%></b> <br>
+						
+							<img src="/assets/money.png" heigth="20" width="20"><b> <%=(deliver.orders.joins(:product)).sum('price*amount')%> Bs</b><br>
+							<%if current_user!=nil && current_user.rol=="admin"%>
+							<img src="/assets/client.png" heigth="20" width="20"><b> <%=deliver.user.name+' '+deliver.user.lastname %></b><br>
+							<img src="/assets/pending.png" heigth="15" width="15"><b> <%=deliver.shippings.where(:status=>"pending").size%>|</b>
+							<%end%>
+							<img src="/assets/confirmed.png" heigth="15" width="15"><b> <%=deliver.shippings.where(:status=>"confirmed").size%>|</b>
+							<img src="/assets/taked.png" heigth="15" width="15"><b> <%=deliver.shippings.where(:status=>"taked").size%>|</b>
+							<img src="/assets/sended.png" heigth="15" width="15"><b> <%=deliver.shippings.where(:status=>"sended").size%></b>
+
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="well">
+							<%if current_user!=nil && current_user.rol=="admin"%>
+							
+						<a href="/shippings/index/<%=deliver.id%>"><img src="/assets/addmessenger.png" heigth="40" width="40"></a>|
+						<a href="/orders/my_sended_orders/<%=deliver.id%>"><img src="/assets/messenger.png" heigth="30" width="30"></a>|
+						<%else%>
+						<a href="/orders/my_checked_orders/<%=deliver.id%>"><img src="/assets/messenger.png" heigth="40" width="40"></a>|
+						
+						<%end%>
+						<a href="/delivers/show/<%=deliver.id%>"><img src="/assets/detail.png" heigth="40" width="40"></a>|
+						<a href="/orders/delete_items/<%=deliver.id%>"><img src="/assets/cruz.png" heigth="30" width="30" > </a>
+
+						</div>
+					</div>
+			</div>
+		<%end%>
+		
+		
 	</div>
+	
 </div>
+
+<script>
+<%if !params[:status].blank?%>
+	var sts=document.getElementById('status');
+sts.selectedIndex=<%=params[:status].to_i-1%>
+<%end%>
+<%if @exist%>
+$('.menu').toggle("slide");
+<%end%>
+<% if (!params['date_to'].blank?) %>
+$('.date_range').toggle("slide");
+<%end%>
+$(document).ready(function() {
+	 
+    $('#showmenu').click(function() {
+         $('.menu').toggle("slide");
+    });
+    $('#showdate').click(function() {
+         $('.date_range').toggle("slide");
+    });
+});
+</script>

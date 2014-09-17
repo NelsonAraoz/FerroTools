@@ -2,18 +2,38 @@
 <html>
 <head>
  
-  <title>CatalogoVentas</title>
+  <title>FerroTools</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-
+<link rel="shortcut icon" href="/assets/logo.png" />
   <meta property="og:description" content="Esdsfsdfdsfds" /> 
  <meta property="og:image" content="http://img2.wikia.nocookie.net/__cb20140410195908/pokemon/images/4/48/025Pikachu_OS_anime.png" />
  <meta property="og:title" content="Titulo" />
  <meta property="og:url" content="http://ferro-tools.herokuapp.com" />
 </head>
 <body style="background-color:#f2701a;">
-
+<div id="myCarousel" class="carousel slide" >
+   <!-- Carousel indicators -->
+   <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+   </ol>   
+   <!-- Carousel items -->
+   <div class="carousel-inner">
+      <div class="item active">
+         <img src="/assets/slide1.jpg" alt="First slide" height="100">
+      </div>
+      <div class="item">
+         <img src="/assets/slide2.jpg" alt="Second slide" >
+      </div>
+   </div>
+   <!-- Carousel nav -->
+   <a class="carousel-control left" href="#myCarousel" 
+      data-slide="prev">&lsaquo;</a>
+   <a class="carousel-control right" href="#myCarousel" 
+      data-slide="next">&rsaquo;</a>
+</div>
 <div class="navbar navbar-default">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -36,10 +56,24 @@
         </ul>
       </li>
       <li class="active"><a href="/locations">Mis direcciones</a></li>
+      <%elsif current_user!=nil && current_user.rol=="admin"%>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pedidos<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+              <li><a href="/orders/all_orders">Pedidos recibidos</a></li>
+              
+               <li><a href="/orders/my_sended_orders">Pedidos comfirmados</a></li>
+          <li><a href="/orders/remove_user_request">Eliminar item</a></li>
+        
+        </ul>
+      </li>
+      
+      <li class="active"><a href="/users/messenger_index">Mensajeros</a></li>
+      
       <%end%>
     <li>
-    <form class="navbar-form navbar-right">
-      <input type="text" class="form-control col-lg-10" placeholder="Buscar">
+    <form class="navbar-form navbar-right" action="/products/search" method="get">
+      <input type="text" class="form-control col-lg-10" placeholder="Buscar" name="product">
     </form>
   </li>
     </ul>
@@ -50,6 +84,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=current_user.name+" "+current_user.lastname%><b class="caret"></b></a>
         <ul class="dropdown-menu">
               <li><a href="/users/edit">Editar datos</a></li>
+              <li><a href="/users/change_password">Cambiar password</a></li>
           <li  ><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
         
         </ul>
@@ -69,7 +104,7 @@
 <div class="row">
   <div class="col-lg-3">
   </div>
-    <div  class="col-lg-9">
+    <div  class="col-lg-6">
       <% flash.each do |name, msg| %>
         <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
@@ -77,6 +112,9 @@
         </div>
       <% end %>
     </div>
+    
+  <div class="col-lg-3">
+  </div>
   </div>
 
 <div class="row">

@@ -21,10 +21,23 @@ CatalogoVentas::Application.routes.draw do
    post "orders/create" => "orders#create"
     get "orders/new/:id" => "orders#new"
      get "orders/my_orders" => "orders#my_orders"
+     get "orders/user_orders/:id" => "orders#my_orders"
+     get "orders/delete_items/:id" => "orders#delete_items"
+     post "orders/remove_orders/:id" => "orders#remove_orders"
+     post "orders/remove_order/:id" => "orders#remove_order"
+     post "orders/add_order/:id" => "orders#add_order"
      get "orders/all_orders" => "orders#all_orders"
+     get "orders/remove_kart/:id" => "orders#remove_kart"
+     post "orders/removing_from_kart/:id" => "orders#removing_from_kart"
+    
      get "orders/my_checked_orders" => "orders#my_checked_orders"
+     get "orders/my_checked_orders/:id" => "orders#my_checked_orders"
+     get "orders/my_sended_orders/:id" => "orders#my_sended_orders"
+  
+     get "orders/view_order/:id" => "orders#view_order"
      get "orders/my_sended_orders" => "orders#my_sended_orders"
     get "subcategories/new/:id" => "subcategories#new"
+    get 'products/search' => 'products#search'
    post "subcategories/create" => "categories#create"
      get "products/new/:id" => "products#new"
    post "products/create" => "products#create"
@@ -34,12 +47,17 @@ CatalogoVentas::Application.routes.draw do
   get "pictures/new" => "pictures#new"
   post "orders/uncheck/:id" => "orders#uncheck", :as => "uncheck"
   post "orders/uncheck_send/:id" => "orders#uncheck_send", :as => "uncheck_send"
-  post "orders/confirm_order_send" => "orders#confirm_order_send"
+  post "shippings/confirm_shipping_send/:id" => "shippings#confirm_shipping_send"
   post "orders/confirm_order" => "orders#confirm"
-
-  post "orders/:id" => "orders#update"
-
+post "shippings/update_shipping_send/:id" => "shippings#update_shipping_send"
+  get 'locations/index/:id' => 'locations#index'
+  post "users/login_service" => 'users#login_service'
   get "locations/asd/:id" => "locations#asd"
+  post "orders/get_my_orders_locations" => "orders#get_my_orders_locations"
+    get "shippings/get_shippings/:id" => "shippings#get_shippings"
+  post "orders/:id" => "orders#update"
+ get "orders/edit_checked_orders" => "orders#edit_checked_orders"
+ 
   post "locations/login" => "locations#login"
   post "pictures/create" => "pictures#create"
   get "users/change_password" => "users#change_password"
@@ -48,10 +66,39 @@ CatalogoVentas::Application.routes.draw do
   get 'presentations/edit' => 'presentations#edit'
   post 'presentations/update' => 'presentations#update'
   get 'presentations/show' => 'presentations#show'
+  get 'users/new_messenger' => 'users#new_messenger', :as => 'new_messenger'
+  get 'users/edit_messenger/:id' => 'users#edit_messenger', :as => 'edit_messenger'
+  post 'users/update_messenger/:id' => 'users#update_messenger', :as => 'update_messenger'
+  post 'users/create_messenger' => 'users#create_messenger'
+  get 'users/messenger_index' => 'users#messenger_index', :as => 'messenger_index'
+  post 'locations/asd' => 'locations#asd'
+  get 'shippings/index/:id' => 'shippings#index'
+  get 'shippings/new/:id' => 'shippings#new'
+    get 'shippings/show/:id' => 'shippings#show'
+  get 'shippings/edit/:id' => 'shippings#edit'
+  get 'delivers/show/:id' => 'delivers#show'
+  get 'delivers/delete_deliver' => 'delivers#delete_deliver'
+  get 'shippings/remove/:id' => 'shippings#remove'
+  post 'shippings/destroy/:id' => 'shippings#destroy'
+   get 'shippings/edit_data/:id' => 'shippings#edit_data'
+   get 'orders/remove_user_request' => 'orders#remove_user_request'
+   post 'shippings/update_data/:id' => 'shippings#update_data'
+   post 'shippings/create/:id' => 'shippings#create'
+post 'orders/confirm_order_send/:id' => 'orders#confirm_order_send'
+get 'delivers/get_deliveries' =>'delivers#get_deliveries'
+post 'delivers/deliveries_table' => 'delivers#deliveries_table'
+post 'delivers/remove_all/:id' => 'delivers#remove_all'
+post 'delivers/get_deliveries' =>'delivers#get_deliveries'
+post 'delivers/change_status' => 'delivers#change_status'
+post 'shippings/edit_status/:id' => 'shippings#edit_status'
+post 'packages/create/:shipping_id/:order_id' => 'packages#create'
+post 'packages/remove/:id' => 'packages#remove'
+post 'shippings/destroy/:id' => 'shippings#destroy'
+post 'shippings/confirm/:id' => 'shippings#confirm'
   # You can have the root of your site routed with "root"
    root 'presentations#show'
    resources :locations
-
+resources :users, only: [:index]
   resources :users, only: [:create,:update,:destroy] 
 resources :pictures, only: [:create]
 resources :presentations, only: [:update]
@@ -59,6 +106,7 @@ resources :products, only: [:create,:update,:destroy]
 resources :categories, only: [:create,:update,:destroy]
 resources :subcategories, only: [:create,:update,:destroy]
 resources :orders , only: [:create,:update,:destroy]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

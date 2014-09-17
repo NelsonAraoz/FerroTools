@@ -1,0 +1,38 @@
+
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this presentation from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for @user, :url=>'/users/create_messenger', :method=>'post' do |f|%>
+<div class="row">
+<div class="col-lg-2">
+ </div>
+ 
+<div class="col-lg-7">
+  <h2>Crear Mensajero</h2>
+<div><%= f.label :email, "Nombre de usuario" %><br />
+  <%= f.text_field :email, :autofocus => true,:class=>'form-control' %></div>
+
+<div><%= f.label :name, "Nombre" %><br />
+  <%= f.text_field :name, :autofocus => true,:class=>'form-control' %></div>
+  <div><%= f.label :lastname, "Apellido" %><br />
+  <%= f.text_field :lastname, :autofocus => true,:class=>'form-control' %></div>
+  <div><%= f.label :phone, "Telefono" %><br />
+  <%= f.text_field :phone, :autofocus => true,:class=>'form-control' %></div>
+  <div><%= f.label :address, "Direccion" %><br />
+  <%= f.text_field :address, :autofocus => true,:class=>'form-control' %></div>
+  <div><%= f.label :password, "Password" %><br />
+  <%= f.password_field :password, :autofocus => true,:class=>'form-control' %></div>
+   <div><%= f.label :password_confirmation, "Confirme password" %><br />
+  <%= f.password_field :password_confirmation, :autofocus => true,:class=>'form-control' %></div>
+ 
+  <div><%= f.submit "Crear" %></div>
+<% end %>
