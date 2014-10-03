@@ -5,7 +5,7 @@
 		<h2 align="center" id="forms">Mis pedidos</h2>
 		
 		<div id="welcomeDiv" class="menu"  style="display:none;"> 
-		<form action="/orders/my_sended_orders" method="get">
+		<form action="<%=request.original_url%>" method="get">
 	
 		<div class="well">
 			<div class="row">
@@ -16,7 +16,9 @@
 				</div>
 				<div class="col-lg-4">
 					Cliente: <input type="text" name="client" class="form-control" value="<%=params[:client]%>">
+					<%if(!@messenger)%>
 					Mensajero: <input type="text" name="messenger" class="form-control" value="<%=params[:messenger]%>">
+					<%end%>
 				</div>
 				<div class="col-lg-4" id="fechas">
 					Fecha de pedido: <input type="date" id="entrega" name="from" class='form-control input-append' data-format='dd/MM/yyyy' style="border-bottom-left-radius: 4px;  border-top-left-radius: 4px;" value="<%=params[:from]%>">
@@ -107,7 +109,6 @@
 
 
 <script>
-
 <%if @exist%>
 $('.menu').toggle("slide");
 <%end%>
@@ -130,7 +131,6 @@ sts.selectedIndex=<%=params[:status].to_i-1%>
 <%end%>
 function set_status(id,status)
 {
-	
 document.getElementById('edit_status').action="/shippings/edit_status/"+id;
 var index;
 if(status=="pending")

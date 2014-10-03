@@ -1,6 +1,5 @@
 class ShippingsController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  layout 'categories'
   def index
     if(current_user!=nil && current_user.rol=="admin")
     @deliver=Deliver.find(params[:id])
@@ -35,11 +34,14 @@ class ShippingsController < ApplicationController
      @shipping=Shipping.find(params[:id])
      @packages=@shipping.packages
      @location=@shipping.deliver.location
+    @status=Hash["pending"=>"Pendiente","confirmed"=>"Confirmado","taked"=> "En camino","sended"=>"Enviado"]
+
   end
   def edit
-      if(current_user!=nil && current_user.rol=="admin")
-  
     @shipping=Shipping.find(params[:id])
+    
+    if(current_user!=nil && current_user.rol=="admin" && (@shipping.status=='pending' || @shipping.status=='confirmed'))
+  
     @deliver=@shipping.deliver
      @location=@deliver.location
      @packages=@shipping.packages
@@ -62,6 +64,9 @@ class ShippingsController < ApplicationController
   end
   def edit_data
     @shipping=Shipping.find(params[:id])
+    if(!(current_user!=nil && current_user.rol=="admin" && (@shipping.status=='pending' || @shipping.status=='confirmed')))
+      redirect_to root_path
+    end
   end
   def update_data
      @shipping=Shipping.find(params[:id])
@@ -81,6 +86,7 @@ class ShippingsController < ApplicationController
       @shipping.status='confirmed'
       @shipping.save
       flash[:alert]="Envio confirmado"
+      Message.shipping_programmed(@shipping,"confirmados").deliver
        redirect_to '/shippings/show/'+@shipping.id.to_s
      else
            flash[:alert]="Se debe asignar un mensajero"
@@ -88,7 +94,7 @@ class ShippingsController < ApplicationController
      end
     else
       flash[:alert]="Envio ya estaba confirmado"
-      redirect_to '/shippings/show'+@shipping.id.to_s
+      redirect_to '/shippings/show/'+@shipping.id.to_s
     end
   end
   def confirm_shipping_send
@@ -130,12 +136,16 @@ class ShippingsController < ApplicationController
       @status=params[:my_status]
       if(@status=='pending' || @status=='confirmed' ||@status=='taked' ||@status=='sended' )
         @shipping=Shipping.find(params[:id])
-        if(@shipping.messenger!=nil && !@shipping.delivery.blank? && @shipping.packages.size>0)
+        if(@shipping.messenger!=nil && !@shipping.delivery.blank?)
         @shipping.status=@status
         @shipping.save
+        @messages=Hash["confirmed"=>"confirmados","taked"=> "en camino","sended"=>"enviados"]
+      if(@shipping.status!='pending')
+        Message.shipping_programmed(@shipping,@messages[@shipping.status]).deliver
+      end
         redirect_to :back
         else
-          flash[:alert]="Se debe asignar un mensajero y por lo menos un producto"
+          flash[:alert]="Se debe asignar un mensajero"
           redirect_to :back
         end
     else

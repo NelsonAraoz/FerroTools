@@ -1,0 +1,25 @@
+<h3>La subcategoria tiene productos con ordenes!</h3>
+<%if(!@products.blank?)%>
+	<h3>Existen pedidos que contienen productos de <%=@subcategory.name%> en ellos</h3>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        
+        <td><%= link_to 'Ver', '/products/dependencies/'+product.id.to_s  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%end%>

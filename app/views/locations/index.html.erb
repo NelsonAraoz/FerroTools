@@ -9,6 +9,7 @@
       <th>Latitud</th>
       <th></th>
       <th></th>
+       <th></th>
     </tr>
   </thead>
 
@@ -21,6 +22,11 @@
         <td><%= location.latitude %></td>
         <td><%= link_to 'Editar', edit_location_path(location),'data-no-turbolink' => true %></td>
         <td><%= link_to 'Ver', '/locations/'+location.id.to_s,'data-no-turbolink' => true %>
+
+        </td>
+        <td><%= link_to 'Eliminar', location_path(location),
+                    method: :delete, data: { confirm: 'Seguro?' }%>
+          
         </td>
       </tr>
     <% end %>

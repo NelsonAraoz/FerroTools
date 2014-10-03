@@ -34,3 +34,20 @@ en:
         password_confirmation: "pass"
         errors:
             confirmation: "adsdsa does not match"
+    models:
+        location: "ubicacion"
+    attributes:
+      location:
+          address: "Direccion"
+          number: "Numero"
+          latitude: "Latitud"
+          longitude: "Longitud"
+    models:
+        product: 'producto'
+    attributes:
+      product:
+          name: "Nombre"
+          code: "Codigo"
+          brand: "Marca"
+          price: "Precio"
+          

@@ -5,6 +5,8 @@ CatalogoVentas::Application.routes.draw do
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get 'categories/dependencies/:id' => 'categories#dependencies'
+
    get "categories/new" => "categories#new"
    post "categories/create" => "categories#create"
    get "categories/edit/:id" => "categories#edit"
@@ -33,6 +35,7 @@ CatalogoVentas::Application.routes.draw do
      get "orders/my_checked_orders" => "orders#my_checked_orders"
      get "orders/my_checked_orders/:id" => "orders#my_checked_orders"
      get "orders/my_sended_orders/:id" => "orders#my_sended_orders"
+  get "orders/messenger_orders/:messenger_id" => "orders#my_sended_orders"
   
      get "orders/view_order/:id" => "orders#view_order"
      get "orders/my_sended_orders" => "orders#my_sended_orders"
@@ -57,7 +60,7 @@ post "shippings/update_shipping_send/:id" => "shippings#update_shipping_send"
     get "shippings/get_shippings/:id" => "shippings#get_shippings"
   post "orders/:id" => "orders#update"
  get "orders/edit_checked_orders" => "orders#edit_checked_orders"
- 
+ post '/users/admin_change_password/:id' => 'users#admin_change_password'
   post "locations/login" => "locations#login"
   post "pictures/create" => "pictures#create"
   get "users/change_password" => "users#change_password"
@@ -77,7 +80,10 @@ post "shippings/update_shipping_send/:id" => "shippings#update_shipping_send"
     get 'shippings/show/:id' => 'shippings#show'
   get 'shippings/edit/:id' => 'shippings#edit'
   get 'delivers/show/:id' => 'delivers#show'
+  post 'delivers/change_location/:id' => 'delivers#change_location'
   get 'delivers/delete_deliver' => 'delivers#delete_deliver'
+   post 'delivers/return_to_cart/:id' => 'delivers#return_to_cart'
+ 
   get 'shippings/remove/:id' => 'shippings#remove'
   post 'shippings/destroy/:id' => 'shippings#destroy'
    get 'shippings/edit_data/:id' => 'shippings#edit_data'
@@ -87,8 +93,18 @@ post "shippings/update_shipping_send/:id" => "shippings#update_shipping_send"
 post 'orders/confirm_order_send/:id' => 'orders#confirm_order_send'
 get 'delivers/get_deliveries' =>'delivers#get_deliveries'
 post 'delivers/deliveries_table' => 'delivers#deliveries_table'
+get 'delivers/deliveries_table' => 'delivers#deliveries_table'
+
 post 'delivers/remove_all/:id' => 'delivers#remove_all'
 post 'delivers/get_deliveries' =>'delivers#get_deliveries'
+get 'delivers/get_deliveries' =>'delivers#get_deliveries'
+post 'messenger_locations/update' => 'messenger_locations#update'
+get 'messenger_locations/update' => 'messenger_locations#update'
+get 'messenger_locations/show/:id' => 'messenger_locations#show'
+get 'messenger_locations/get_location/:id' => 'messenger_locations#get_location'
+get 'products/dependencies/:id' => 'products#dependencies'
+get 'subcategories/dependencies/:id' => 'subcategories#dependencies'
+
 post 'delivers/change_status' => 'delivers#change_status'
 post 'shippings/edit_status/:id' => 'shippings#edit_status'
 post 'packages/create/:shipping_id/:order_id' => 'packages#create'

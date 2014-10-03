@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :orders
+  has_many :shippings
   has_many :delivers
   has_many :locations
+  has_many :messenger_locations
   validates :name,
 	:presence  => { :message => " es requerido, no puede ser nulo" }
 	validates :lastname,

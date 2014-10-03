@@ -5,20 +5,65 @@
       
     <div class="panel panel-primary">
         <div class="panel-heading">
-          <%if current_user!=nil && current_user.rol=="admin"%>
-    
-          <div align="right"><%=link_to image_tag("cruz.png",:size=>"30x30"),'/shippings/destroy/'+@shipping.id.to_s,:method=>"post",:confirm=>"Seguro?"%>
-</div>
-<%end%>
            <h3 class="panel-title"><a href="/locations/<%=@location.id%>" data-no-turbolink = "true"><%=@location.address.to_s+"# "+@location.number.to_s%></a> </h3>
+           <div class="dropdown">
+                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+          
+          <span class="caret"></span>
+        </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+                 <li><a href="/delivers/show/<%=@shipping.deliver.id%>"><i><img src="/assets/detail.png" heigth="30" width="30"></i>Ver Orden completa</a>
+ </li>
+
+                 <%if current_user!=nil && current_user.rol=="admin"%>
+                          
+                         <li> <a href="/shippings/index/<%=@shipping.deliver.id%>"><i><img src="/assets/list.png" heigth="30" width="30"></i>Lista de envios</a></li>
+   
+                        <%if(@shipping.status=='pending')%>
+                           <li> <%=link_to image_tag('ok.png',:size=>'30x30')+ "Confirmar","/shippings/confirm/"+@shipping.id.to_s,:method=>"post"%></li>
+                        <%else%>
+                           <li> <a data-toggle="modal" href="#myModal"><i><img src="/assets/edit.png" heigth="30" width="30"></i>Editar estado</a></li>
+                        <%end%>
+                      <%if( @shipping.status!='taked' && @shipping.status!='sended')%>
+                          <li><%=link_to image_tag('editmessenger.png',:size=>'30x30')+"Mensajero","/shippings/edit_data/"+@shipping.id.to_s%></li>
+                          <li>  <a href="/shippings/edit/<%=@shipping.id%>"><i><img src="/assets/edit2.png" heigth="30" width="30"></i>Editar Envio</a> </li>
+                      
+                          <li><%=link_to image_tag("cruz.png",:size=>"30x30")+" Eliminar",'/shippings/destroy/'+@shipping.id.to_s,:method=>"post",:confirm=>"Seguro?"%>
+                        </li>
+                          
+                     <%end%>
+                <%end%>
+             </ul>
+           </div>
         </div>
         <div class="panel-body">
-          <div class="well">
+          <div class="col-lg-6">
+              <div class="well">
             <h4>Datos personales</h4>
           <b>Nombre: </b> <%=@location.user.name%><br>
           <b>Apellido: </b> <%=@location.user.lastname%><br>
           <b>Telefono: </b> <%=@location.user.phone%><br>
+            </div>
+          
           </div>
+          <div class="col-lg-6">
+            <div class="well">
+               <h4>Datos Pedido</h4>
+            <%if !@shipping.messenger.nil?%>
+          <b>Nombre mensajero: </b> <%=@shipping.messenger.name%><br>
+          <b>Apellido mensajero: </b> <%=@shipping.messenger.lastname%><br>
+          <b>Fecha estimada: </b> <%=@shipping.delivery%><br>
+          
+          <%else%>
+           Mensajero Pendiente
+          <%end%>
+          <b>Estado: </b> <img src="/assets/<%=@shipping.status%>.png" height="40" width="40"><%=@status[@shipping.status]%>
+          
+          </div>
+          </div>
+          
+        
           <table class="table table-striped table-bordered">
             <tr>
               <th>Producto</th>
@@ -47,17 +92,60 @@
           </table>
         
         </div>
-         <%if current_user!=nil && current_user.rol=="admin"%>
-    <a href="/shippings/edit/<%=@shipping.id%>">Editar</a>|
-   
-    <%if(@shipping.status=='pending')%>
-    <%=link_to "Confirmar","/shippings/confirm/"+@shipping.id.to_s,:method=>"post"%>|
-<%end%>
-    <%=link_to "Mensajero","/shippings/edit_data/"+@shipping.id.to_s%>|
-<%end%>
- <a href="/delivers/show/<%=@shipping.deliver.id%>">Ver Orden completa</a>
+         
     </div>
    
             
   </div>
 </div>
+
+
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Actualizar pedido</h4>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-5">
+<form accept-charset="UTF-8" action="/shippings/edit_status/<%=@shipping.id%>" id="edit_status" method="post">
+<select class="form-control" name="my_status" id="my_status" ><option value="pending" name="1">Pendiente</option><option value="confirmed" name="2">Confirmada</option><option value="taked" name="3">Tomada</option><option value="sended" name="4">Enviada</option></select>
+  <input type="submit" value="actualizar" class = "btn btn-primary">
+</form>
+</div>
+</div>
+      </div>
+      </div>
+  </div>
+</div>
+<script>
+set_status('<%=@shipping.status%>');
+function set_status(status)
+{
+ var index;
+if(status=="pending")
+{
+  index=0;
+}
+else{
+if(status=="confirmed")
+{
+  index=1;
+}
+else
+{
+  if(status=="taked")
+    {
+      index=2;
+    }
+    else{
+      index=3;
+    }
+}
+}
+document.getElementById('my_status').selectedIndex=index;
+}
+</script>

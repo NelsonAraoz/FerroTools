@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-	 layout 'categories'
     skip_before_filter :verify_authenticity_token  
   def new
     if(current_user!=nil && current_user.rol=='admin')
@@ -84,29 +83,18 @@ class OrdersController < ApplicationController
         flash[:alert]="No se cuenta con la cantidad suficiente"
         redirect_to :back
      else
+      if(params[:order][:amount].to_i<=0)
+        flash[:alert]="Debe ser un numero positivo"
+    redirect_to :back
+      else
     @product.stock=@product.stock+@order.amount
     @order.update(params.require(:order).permit(:amount))
     @product.stock=@product.stock-@order.amount
     @product.save
     flash[:alert]="Pedido actualizado exitosamente"
-    redirect_to '/orders/my_orders'
+    redirect_to :back
+  end
     end
-  end
-  def uncheck
-    @order=Order.find(params[:id])
-      @order.checked=false
-      @order.save
-      redirect_to :back
-  end
-  def uncheck_send
-    @order=Order.find(params[:id])
-    @shipping=@order.shipping
-      @order.shipping_id=nil
-      @order.save
-      if(@shipping.orders==0)
-        @shipping.destroy
-      end
-      redirect_to :back
   end
 def my_orders
   if(current_user==nil || current_user.rol=="messenger")
@@ -132,6 +120,7 @@ def add_order
   @order=Order.find(params[:id])
   @product=@order.product
   @amount=params[:amount].to_i
+  if(@amount>0)
   if(@amount<=@product.stock)
     @product.stock=@product.stock-@amount
     @order.amount=@order.amount+@amount
@@ -143,12 +132,17 @@ def add_order
     flash[:alert]="Monto excede"
     redirect_to :back
   end
+else
+   flash[:alert]="Introduzca un valor positivo"
+    redirect_to :back
+end
 end
 def remove_order
   @order=Order.find(params[:id])
   @deliver=@order.deliver
   @amount=params[:amount].to_i
   @total=@order.amount-@order.packages.sum(:amount)
+  if(@amount>0)
   if(@amount<=@total)
     if(@order.amount_empty(@amount))
       @order.destroy
@@ -163,42 +157,10 @@ def remove_order
     flash[:alert]="Monto excede"
     redirect_to :back
   end
+else
+   flash[:alert]="Introduzca un valor positivo"
+    redirect_to :back
 end
-def remove_orders
-  if(current_user!=nil)
-      @delivery=Deliver.find(params[:id])
-    if(@delivery.status=='pending' || current_user.rol=='admin')
-      @remove=params[:eliminar].to_a
-
-     @remove.each do |id|
-      o=Order.find(id.to_s)
-      if(o.deliver_id==@delivery.id)
-      amount=o.shippings.sum(:amount)
-        if(amount==0)
-          o.deliver_id=nil
-          o.save
-        else
-          @order=Order.new
-          @order.amount=o.amount-amount
-          @order.product_id=o.product_id
-          @order.user_id=o.user_id
-          @order.save
-          o.amount=amount
-          o.save
-        end
-      end
-      end  
-      if(@delivery.orders.size==0)
-        @delivery.destroy
-      end
-      redirect_to root_path
-    else
-      flash[:alert]="La entrega no puede ser actualizada"
-      redirect_to root_path
-    end
-  else
-    redirect_to root_path
-  end
 end
 def my_checked_orders
   if(current_user!=nil && current_user.rol=='regular')
@@ -219,22 +181,27 @@ end
 def remove_kart
   if(current_user!=nil && current_user.rol=="admin")
     if(params[:from].blank?)
-      @date=Date.new(1,1,1)
+      params[:from]=DateTime.now.to_date
      else
       @date=params[:from]
     end
     @product=Product.find(params[:id])
-    @orders=filter_order(Order.where(:product_id=>@product.id,:deliver_id=>nil),@date)
+    @orders=filter_order(Order.where(:product_id=>@product.id,:deliver_id=>nil),params[:from])
   else
     redirect_to root_path
   end
 end
 def delete_items
  if(current_user!=nil )
+
   @delivery=Deliver.find(params[:id])
   @orders=@delivery.orders
   @confirmed=current_user.rol=='regular'
-  
+  @user=@delivery.user
+  @is_shipping=@delivery.shippings.where(:status=>'taked').size>0
+  if(@confirmed && current_user.id!=@user.id)
+    redirect_to root_path
+  end
 else
   redirect_to root_path
 end
@@ -242,6 +209,7 @@ end
 
 def my_sended_orders
   if(current_user!=nil && current_user.rol=="admin")
+    @messenger=false
         @exist=!params[:address].blank? || !params[:client].blank? || !params[:from].blank? || !params[:date_to].blank? || !params[:status].blank?
         if(params[:status].blank?)
             params[:status]="1"
@@ -255,6 +223,9 @@ def my_sended_orders
         end
         if(!params[:id].blank?)
           @delivery=@delivery.where(:deliver_id=>params[:id])
+        elsif(!params[:messenger_id].blank?)
+            @delivery=@delivery.where(:messenger_id=>params[:messenger_id])   
+            @messenger=true 
         end
         @filtered_deliveries=filter_all_shippings(@delivery,params[:address],params[:status],params[:client],params[:from],params[:date_to],params[:messenger],current_user.rol)
            @deliveries=Kaminari.paginate_array(@filtered_deliveries).page(params[:page]).per(5)
@@ -286,14 +257,7 @@ def all_orders
           redirect_to root_path
         end
   end
-  def view_checked_order
-    if(current_user!=nil && current_user.rol=='regular')
-  @orders=current_user.orders.where(:checked=>true).order('updated_at DESC')
-else
-  redirect_to root_path
-end
-  end
-def remove_user_request
+ def remove_user_request
     if(current_user!=nil && current_user.rol=="admin")
       @orders=[]
        @shippings=[]
@@ -305,7 +269,7 @@ def remove_user_request
             @deliver=@order.deliver
             @shippings=filter_shippings(@deliver.shippings,@order.id)
           else
-            redirect_to :back
+            redirect_to '/orders/remove_user_request'
             end
          end
         else 
@@ -356,11 +320,6 @@ end
 
   end
   
-  #services
-def get_my_orders_locations
-  @shipping=Shipping.where(:status=>'ready')
-render json: get_locations(@shipping.where(:messenger_id=>params[:id]))
-end
 
 :private
 def get_locations(location_ids)
@@ -382,17 +341,15 @@ def filter_orders(orders,name,brand,from,to)
   @filtered_orders
 end
 def get_shippings(deliveries,id)
-@shippings=nil
+@s=[]
   deliveries.each do |delivery|
     if(id==nil || delivery.id==id.to_i)
-    if(@shippings==nil)
-      @shippings=delivery.shippings
-    else
-    @shippings<<delivery.shippings
+      delivery.shippings.each do |shipping|
+    @s.push(shipping)
   end
-end
+    end
   end
-  @shippings
+  @s
 end
 def filter_shippings(shippings,id)
   result=[]

@@ -1,38 +1,47 @@
 class CategoriesController < ApplicationController
-	layout 'categories'
+def dependencies
+  @category=Category.find(params[:id])
+  @subcategories=[]
+  @category.subcategories.each do |subcategory|
+      if(subcategory.has_dependencies)
+        @subcategories<<subcategory
+      end
+   end
+ end
   def destroy
-    category=Category.find(params[:id])
-    category.subcategories.each do |subcategory|
+    @category=Category.find(params[:id])
+    if(!@category.has_dependencies)
+    @category.subcategories.each do |subcategory|
       subcategory.products.each do |product|
-          product.pictures.each do |picture|
-              picture.destroy
-          end
           product.destroy
       end
       subcategory.destroy
     end
-    category.destroy
-    flash[:alert]="Se elimino la categoria y todo lo relacionado con esta"
+    @category.destroy
+    flash[:alert]="La categoria y todo lo relacionado a esta fueron eliminadas"
     redirect_to root_path
+  else
+    redirect_to '/categories/dependencies/'+@category.id.to_s
+  end
   end
   def display
          
-   @category=Category.find_by_id(params[:id])
-   @subcategories=[]
+   @category=Category.find(params[:id])
+   if(@category.visible)
     if(@category!=nil)
-    @subcategories=@category.subcategories
+    @subcategories=@category.subcategories.where(:visible=>true)
     end
-    @products=[]
     if(params[:subid]!=nil)
-      @order=Order.new
-      @selected_subcategory=@category.subcategories.find(params[:subid])
-      @products=@selected_subcategory.products.sort_by{|e| e[:name]}
-      if(params[:prodid]!=nil)
-        @products=@selected_subcategory.products.where(:id=>params[:prodid])
-        @pictures=@products.first.pictures
+      @selected_subcategory=@category.subcategories.where(:visible=>true).find(params[:subid])
+      if(!@selected_subcategory.blank?)
+      @products=@selected_subcategory.products.where(:visible=>true).sort_by{|e| e[:name]}
+      else
+        redirect_to root_path
       end
     end
-  
+  else
+    redirect_to root_path
+  end
   end
 
   def new

@@ -9,6 +9,13 @@
 			<%end%>
 	</div>
 	<div class="col-lg-6">
+			<%if(@product.errors.size>0)%>
+<div class="well">
+<% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </div>
+    <%end%>
 		<h3>Actualizar Producto</h3></br>
 <%= form_for @product, :html => { :class => 'bs-example form-horizontal', :multipart => true}  do |t| %>
 Nombre: <%=t.text_field :name,:class=>'form-control'%><br>

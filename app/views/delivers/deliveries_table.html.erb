@@ -5,9 +5,8 @@
 					<th>Marca</th>
 					<th>Cantidad</th>
 					<th>Fecha</th>
-          <th>Recibidos</th>
-           <th>Saldo</th>
-		
+          <th>Enviar</th>
+           
 				  	</tr>
             
   			  	<%@orders.each do |order|%>
@@ -19,8 +18,7 @@
 						      <%=order.amount%>
 					       </td>
 				        <td><%=order.updated_at.to_date%></td>
-                <td><%=order.shippings.sum(:amount)%>/<%=order.amount%></td>
-				<td><%=order.amount-order.shippings.sum(:amount)%></td>
+                <td><%=@shipping.packages.where(:order_id=>order.id).sum(:amount)%>/<%=order.amount%></td>
 				
 				  		</tr>
   			  	<%end%>

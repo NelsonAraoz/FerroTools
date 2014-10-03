@@ -1,0 +1,35 @@
+<h3>El producto tiene pedidos pendientes!</h3>
+<b>Solucione esto, antes de poder eliminar <%=@product.name%></b>
+<br>
+<%if(@cart_size>0)%>
+en carrito:<br>
+<a href="/orders/remove_kart/<%=@product.id%>">Se encontro <%=@product.name%> en <%=@cart_size%> carritos</a>
+<%end%>
+<%if(!@deliveries.blank?)%>
+	<h3>Existen pedidos que contienen <%=@product.name%> en ellos</h3>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Direccion</th>
+      <th>Fecha de pedido</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deliveries.each do |order| %>
+      <tr>
+      	<td><%= order.deliver.user.name.to_s+' '+order.deliver.user.lastname.to_s %></td>
+        <td><%= order.deliver.location.address.to_s+' #'+ order.deliver.location.number.to_s%></td>
+        <td><%= order.deliver.created_at %></td>
+        
+        <td><%= link_to 'Ver', '/delivers/show/'+order.deliver.id.to_s  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%end%>

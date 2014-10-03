@@ -26,9 +26,12 @@
   </thead>
   <tbody>
    <% @products.each do |product| %>
-    <tr style='cursor:pointer' onclick="document.location.href='/categories/<%=@category.id.to_s%>/<%=@selected_subcategory.id.to_s%>/<%=product.id.to_s%>'">
+    <tr style='cursor:pointer' onclick="document.location.href='/categories/<%=@category.slug.to_s%>/<%=@selected_subcategory.slug.to_s%>/<%=product.slug.to_s%>'">
           <td> <%if(product.pictures.size>0)%>
             <img src="<%=product.pictures.first.picture.url%>" heigth="100" width="100"/>
+            <%else%>
+               <img src="/assets/logo.png" heigth="100" width="100">
+         
           <%end%></td>
 
           <td>

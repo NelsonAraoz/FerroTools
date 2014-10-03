@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	skip_before_filter :verify_authenticity_token 
+ 	skip_before_filter :verify_authenticity_token 
 		
 def update
 		#super
@@ -27,6 +27,17 @@ def update
  def messenger_index
  	@messengers=User.where(:rol=>'messenger')
  end
+ def admin_change_password
+    @user=User.find(params[:id])
+    @user.password=params[:password]
+    if(@user.save)
+    flash[:alert]="Password cambiado con exito"
+    else
+    flash[:alert]="Password debe tener al menos 6 caracteres"
+    end
+     redirect_to '/users/edit_messenger/'+@user.id.to_s
+   
+ end
  def update_messenger
    @user=User.find(params[:id])
  if messenger_params[:password].blank?
@@ -38,7 +49,6 @@ def update
     redirect_to '/users/messenger_index'
     
    else
-    flash[:alert]="Error"
     render '/users/edit_messenger/'
    end
   
@@ -97,18 +107,22 @@ def update
 
  def destroy
  	@user=User.find(params[:id])
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to messenger_index_path }
-      format.json { head :no_content }
-    end
+  if(Shipping.where(:messenger_id=>@user.id).blank?)
+  @user.destroy
+  flash[:alert]="Mensajero eliminado!"
+  redirect_to :back
+  else
+    flash[:alert]="Mensajero tiene envios realizados o pendientes!"
+  redirect_to '/orders/messenger_orders/'+@user.id.to_s
+  
+  end
   end
   #SERVICES
 
   def login_service
   	@user=User.find_by_email(params[:email])
-  	if(@user!=nil && @user.valid_password?(params[:password]))
-  		render json:  '{"res": true}'
+  	if(@user!=nil && @user.rol=="messenger" && @user.valid_password?(params[:password]))
+  		render json:  '{"res": true,"id": '+@user.id.to_s+'}'
   	else
   		render json: '{"res": false}'
   	end

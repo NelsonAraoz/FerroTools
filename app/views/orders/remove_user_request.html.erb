@@ -1,6 +1,15 @@
+
 <form action="/orders/remove_user_request" method="get">
-<input type="text" name="id" value="<%=params[:id]%>"><input type="submit" value="Buscar">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-5">
+    <b>Codigo:</b><input type="text" class="form-control" name="id" value="<%=params[:id]%>"><input type="submit" value="Buscar" class="btn-primary">
+    </div>
+
 </form>
+
+<%if !@deliver.nil?%>
+<a href="/delivers/show/<%=@deliver.id%>">Orden completa</a>
+<%end%>
 <table class="table table-striped table-bordered">
   			  	<tr>
   			  		<th>Producto</th>

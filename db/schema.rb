@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917151541) do
+ActiveRecord::Schema.define(version: 20140926195718) do
 
   create_table "categories", force: true do |t|
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",    default: true
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug"
 
   create_table "delivers", force: true do |t|
     t.integer  "user_id"
@@ -28,6 +32,19 @@ ActiveRecord::Schema.define(version: 20140917151541) do
 
   add_index "delivers", ["location_id"], name: "index_delivers_on_location_id"
   add_index "delivers", ["user_id"], name: "index_delivers_on_user_id"
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "index", force: true do |t|
     t.string   "content"
@@ -44,7 +61,18 @@ ActiveRecord::Schema.define(version: 20140917151541) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "visible",    default: true
   end
+
+  create_table "messenger_locations", force: true do |t|
+    t.integer  "user_id"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messenger_locations", ["user_id"], name: "index_messenger_locations_on_user_id"
 
   create_table "orders", force: true do |t|
     t.integer  "amount"
@@ -93,8 +121,11 @@ ActiveRecord::Schema.define(version: 20140917151541) do
     t.integer  "subcategory_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",        default: true
+    t.string   "slug"
   end
 
+  add_index "products", ["slug"], name: "index_products_on_slug"
   add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id"
 
   create_table "shippings", force: true do |t|
@@ -118,9 +149,12 @@ ActiveRecord::Schema.define(version: 20140917151541) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",     default: true
+    t.string   "slug"
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id"
+  add_index "subcategories", ["slug"], name: "index_subcategories_on_slug"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",        null: false

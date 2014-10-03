@@ -1,16 +1,26 @@
 class SubcategoriesController < ApplicationController
-	layout 'categories'
+  
  def destroy
-  subcategory=Subcategory.find(params[:id])
-  subcategory.products.each do |product|
-          product.pictures.each do |picture|
-              picture.destroy
-          end
-          product.destroy
+  @subcategory=Subcategory.find(params[:id])
+  if(!@subcategory.has_dependencies)
+  @subcategory.products.each do |product|
+          product.remove_myself
       end
-      subcategory.destroy
-      flash[:alert]="Se elimino la sub-categoria y todo lo relacionado con esta"
+      @subcategory.destroy
+      flash[:alert]="La sub-categoria y productos pertenecientes fueron eliminados!"
     redirect_to root_path
+  else
+    redirect_to '/subcategories/dependencies/'+@subcategory.id.to_s
+  end
+ end
+ def dependencies
+  @subcategory=Subcategory.find(params[:id])
+  @products=[]
+  @subcategory.products.each do |product|
+    if(product.orders.size>0)
+      @products<<product
+    end
+  end
  end
   def new
     if(current_user.rol=='admin')

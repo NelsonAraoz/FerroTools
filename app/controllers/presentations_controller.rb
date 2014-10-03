@@ -1,6 +1,5 @@
 class PresentationsController < ApplicationController
   before_action :set_presentation, only: [:show, :edit, :update, :destroy]
-  layout 'categories'
   # GET /presentations
   # GET /presentations.json
 

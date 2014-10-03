@@ -5,8 +5,22 @@
 		<div class="page-header">
 		<h2 align="center" id="forms">Eliminar items</h2>
 		Procure consultar con el cliente antes de realizar una accion
+		<div class="well"><b>Cliente: </b><%=@user.name+' '+@user.lastname%><br>
+				<b>Telefono: </b><%=@user.phone%>
 		</div>
-
+		</div>
+		<div class="well">
+		<%if(!@is_shipping)%>
+		<form action="/delivers/change_location/<%=@delivery.id%>" method="post">
+		<b>Direccion a enviar:</b>
+		<%=select_tag :location,options_from_collection_for_select(@user.locations, "id", "address",@delivery.location.id),:class=>'form-control'%>
+		<input type="submit" value="Cambiar">
+		</form>
+		<%else%>
+			<b>Hay envios que estan siendo realizados o fueron realizados! no se puede cambiar la ubicacion</b><br>
+			<a href="/orders/my_sended_orders/<%=@delivery.id%>">Ver</a>
+		<%end%>
+		</div>
 		<table class="table table-striped table-bordered">
 		<tr>	
 			<th>Producto</th>
@@ -29,8 +43,7 @@
 		<%end%>
 		</table>
 	<br>
-	<b><%=link_to "Eliminar todo","/delivers/remove_all/"+@delivery.id.to_s,:method=>"post"%></b><br>
-	
+	<b><%=link_to "Eliminar todo","/delivers/remove_all/"+@delivery.id.to_s,:method=>"post"%></b>
 	
 		
 	</div>

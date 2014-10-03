@@ -26,7 +26,7 @@ else
   redirect_to root_path
 end
 else
-flash[:error]="cantidad > 0"
+flash[:error]="cantidad mayor a 0"
 redirect_to :back
 end
 end

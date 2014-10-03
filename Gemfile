@@ -11,7 +11,7 @@ gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 4.0.2'
 gem 'gmaps4rails'
 gem 'geocoder'
-
+gem 'whenever', :require => false
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 2.1.1'
 
@@ -27,6 +27,7 @@ gem 'taps'
 gem 'paperclip'
 gem 'paperclip-dropbox'
 gem 'colorbox-rails'
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'kaminari'

@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
 	def amount_empty(d_amount)
 		self.amount=self.amount-d_amount
 		self.save
+		self.product.stock=self.product.stock+d_amount
+		self.product.save
 		self.amount==0
 	end
 	def filter(name,brand,from,to)
